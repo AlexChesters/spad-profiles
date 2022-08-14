@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Profile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="2" xmlns="http://www.fsgs.com/SPAD">
+  <Variables>
+    <Variable Name="LOCAL:ALEX_AP_KNOB_CRS" Value="0" ValueType="Double" />
+    <Variable Name="LOCAL:ALEX_AP_KNOB_HDG" Value="0" ValueType="Double" />
+    <Variable Name="LOCAL:ALEX_AP_KNOB_ALT" Value="0" ValueType="Double" />
+  </Variables>
+  <Devices>
+    <Device VendorID="0x294B" ProductID="0x1901" DevicePath="\\?\hid#vid_294b&amp;pid_1901#7&amp;87306dd&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="2">
+      <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
+        <Events>
+          <Event BoundTo="BUTTON_32">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_UP" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="Y_AXIS">
+            <EventDefinitions>
+              <EventDefinition Trigger="VALUE">
+                <EventActions>
+                  <EventActionRangedAxis ConfigID="LEVER_SPOILER">
+                    <Options>
+                      <Option Key="USERAWVALUE" Value="True" />
+                      <Option Key="MIN" Value="0" />
+                      <Option Key="IDLE" Value="180" />
+                      <Option Key="MAX" Value="1023" />
+                      <Option Key="INVERTAXIS" Value="True" />
+                    </Options>
+                  </EventActionRangedAxis>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_21">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LOCAL:ALEX_AP_KNOB_ALT" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_19">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LOCAL:ALEX_AP_KNOB_HDG" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_1">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:MCP_MODE_HDG" Value="1" ValueOperation="Increment">
+                    <Options>
+                      <Option Key="HASMINMAX" Value="True" />
+                      <Option Key="VALUEMAX" Value="1" />
+                      <Option Key="ROLLOVER" Value="True" />
+                    </Options>
+                  </EventActionChangeValue>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_2">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:MCP_MODE_VL" Value="1" ValueOperation="Increment">
+                    <Options>
+                      <Option Key="HASMINMAX" Value="True" />
+                      <Option Key="VALUEMAX" Value="1" />
+                      <Option Key="ROLLOVER" Value="True" />
+                    </Options>
+                  </EventActionChangeValue>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_18">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LOCAL:ALEX_AP_KNOB_CRS" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_5">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:MCP_MODE_ALT" Value="1" ValueOperation="Increment">
+                    <Options>
+                      <Option Key="HASMINMAX" Value="True" />
+                      <Option Key="VALUEMAX" Value="1" />
+                      <Option Key="ROLLOVER" Value="True" />
+                    </Options>
+                  </EventActionChangeValue>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_6">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:MCP_MODE_VS" Value="1" ValueOperation="Increment">
+                    <Options>
+                      <Option Key="HASMINMAX" Value="True" />
+                      <Option Key="VALUEMAX" Value="1" />
+                      <Option Key="ROLLOVER" Value="True" />
+                    </Options>
+                  </EventActionChangeValue>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_7">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:MCP_MODE_IAS" Value="1" ValueOperation="Increment">
+                    <Options>
+                      <Option Key="HASMINMAX" Value="True" />
+                      <Option Key="VALUEMAX" Value="1" />
+                      <Option Key="ROLLOVER" Value="True" />
+                    </Options>
+                  </EventActionChangeValue>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_8">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_MASTER" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_23">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:PED_MID_ELEV_TRIM_WHEEL" Value="1" ValueOperation="Increment">
+                    <Options>
+                      <Option Key="HASMINMAX" Value="True" />
+                      <Option Key="VALUEMAX" Value="100" />
+                    </Options>
+                  </EventActionChangeValue>
+                  <EventActionPlaySound SoundName="D:\spad.NEXT sounds\click.mp3">
+                    <Volume>50</Volume>
+                  </EventActionPlaySound>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_22">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:PED_MID_ELEV_TRIM_WHEEL" Value="1" ValueOperation="Decrement">
+                    <Options>
+                      <Option Key="HASMINMAX" Value="True" />
+                      <Option Key="VALUEMAX" Value="100" />
+                    </Options>
+                  </EventActionChangeValue>
+                  <EventActionPlaySound SoundName="D:\spad.NEXT sounds\click.mp3">
+                    <Volume>50</Volume>
+                  </EventActionPlaySound>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_28">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:PED_MID_ENG4_LATCH" Value="1" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_27">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:PED_MID_ENG3_LATCH" Value="1" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_26">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:PED_MID_ENG2_LATCH" Value="1" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_25">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:PED_MID_ENG1_LATCH" Value="1" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="E_AP_ENCODER">
+            <EventDefinitions>
+              <EventDefinition Trigger="TUNER_CLOCKWISE">
+                <EventConditions>
+                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LOCAL:ALEX_AP_KNOB_ALT" />
+                </EventConditions>
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:MCP_ALT_SEL_KNOB" Value="1" ValueOperation="Increment" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_CLOCKWISE">
+                <EventConditions>
+                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LOCAL:ALEX_AP_KNOB_HDG" />
+                </EventConditions>
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:MCP_HDG_SEL" Value="1" ValueOperation="Increment" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_CLOCKWISE">
+                <EventConditions>
+                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LOCAL:ALEX_AP_KNOB_CRS" />
+                </EventConditions>
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:MCP_NAV1_SEL" Value="1" ValueOperation="Increment" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE">
+                <EventConditions>
+                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LOCAL:ALEX_AP_KNOB_ALT" />
+                </EventConditions>
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:MCP_ALT_SEL_KNOB" Value="1" ValueOperation="Decrement" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE">
+                <EventConditions>
+                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LOCAL:ALEX_AP_KNOB_HDG" />
+                </EventConditions>
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:MCP_HDG_SEL" Value="1" ValueOperation="Decrement" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE">
+                <EventConditions>
+                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LOCAL:ALEX_AP_KNOB_CRS" />
+                </EventConditions>
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:MCP_NAV1_SEL" Value="1" ValueOperation="Decrement" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_31">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_DOWN" Value="0" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_UP" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_16">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESSIMM">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_DECR" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_15">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESSIMM">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_INCR" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="X_AXIS">
+            <EventDefinitions>
+              <EventDefinition Trigger="VALUE">
+                <EventActions>
+                  <EventActionCustomAxis TargetDataDefinition="MSFS:THROTTLE1_AXIS_SET_EX1" Value="0">
+                    <Options>
+                      <Option Key="ALWAYSACTIVE" Value="False" />
+                      <Option Key="RANGEFROM" Value="0" />
+                      <Option Key="USEMAPPING" Value="True" />
+                      <Option Key="USETRIGGERVALUE" Value="True" />
+                      <Option Key="MAPFROM" Value="-16383" />
+                      <Option Key="MAPTO" Value="16383" />
+                      <Option Key="USERAWVALUE" Value="True" />
+                      <Option Key="RANGETO" Value="1023" />
+                    </Options>
+                  </EventActionCustomAxis>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="RZ_AXIS">
+            <EventDefinitions>
+              <EventDefinition Trigger="VALUE">
+                <EventActions>
+                  <EventActionCustomAxis TargetDataDefinition="MSFS:THROTTLE2_AXIS_SET_EX1" Value="0">
+                    <Options>
+                      <Option Key="ALWAYSACTIVE" Value="False" />
+                      <Option Key="RANGEFROM" Value="0" />
+                      <Option Key="USEMAPPING" Value="True" />
+                      <Option Key="USETRIGGERVALUE" Value="True" />
+                      <Option Key="MAPFROM" Value="-16383" />
+                      <Option Key="MAPTO" Value="16383" />
+                      <Option Key="USERAWVALUE" Value="True" />
+                      <Option Key="RANGETO" Value="1023" />
+                    </Options>
+                  </EventActionCustomAxis>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="RY_AXIS">
+            <EventDefinitions>
+              <EventDefinition Trigger="VALUE">
+                <EventActions>
+                  <EventActionCustomAxis TargetDataDefinition="MSFS:THROTTLE3_AXIS_SET_EX1" Value="0">
+                    <Options>
+                      <Option Key="ALWAYSACTIVE" Value="False" />
+                      <Option Key="RANGEFROM" Value="0" />
+                      <Option Key="USEMAPPING" Value="True" />
+                      <Option Key="USETRIGGERVALUE" Value="True" />
+                      <Option Key="MAPFROM" Value="-16383" />
+                      <Option Key="MAPTO" Value="16383" />
+                      <Option Key="USERAWVALUE" Value="True" />
+                      <Option Key="RANGETO" Value="1023" />
+                    </Options>
+                  </EventActionCustomAxis>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="RX_AXIS">
+            <EventDefinitions>
+              <EventDefinition Trigger="VALUE">
+                <EventActions>
+                  <EventActionCustomAxis TargetDataDefinition="MSFS:THROTTLE4_AXIS_SET_EX1" Value="0">
+                    <Options>
+                      <Option Key="ALWAYSACTIVE" Value="False" />
+                      <Option Key="RANGEFROM" Value="0" />
+                      <Option Key="USEMAPPING" Value="True" />
+                      <Option Key="USETRIGGERVALUE" Value="True" />
+                      <Option Key="MAPFROM" Value="-16383" />
+                      <Option Key="MAPTO" Value="16383" />
+                      <Option Key="USERAWVALUE" Value="True" />
+                      <Option Key="RANGETO" Value="1023" />
+                    </Options>
+                  </EventActionCustomAxis>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+        </Events>
+      </DevicePage>
+      <Events />
+    </Device>
+    <Device VendorID="0x044F" ProductID="0x0405" DevicePath="\\?\hid#vid_044f&amp;pid_0405#8&amp;e7c901f&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="2">
+      <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
+        <Events>
+          <Event BoundTo="BUTTON_4">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_MASTER" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_3">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:TOGGLE_AFTERBURNER" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+        </Events>
+      </DevicePage>
+      <Events />
+    </Device>
+  </Devices>
+  <Options>
+    <Option Key="Elgato.Streamdeck.Brightness" Value="100" />
+    <Option Key="Elgato.Streamdeck.DarkenDevice" Value="True" />
+    <Option Key="Elgato.Streamdeck.FlashBackgroundOnly" Value="True" />
+    <Option Key="Saitek.BIP.EnableVirtualPower" Value="True" />
+    <Option Key="Saitek.BIP.Brightness" Value="50" />
+    <Option Key="Saitek.BIP.Priority.VALUEOFF" Value="0" />
+    <Option Key="Saitek.BIP.Priority.VALUEGREEN" Value="1" />
+    <Option Key="Saitek.BIP.Priority.VALUEYELLOW" Value="2" />
+    <Option Key="Saitek.BIP.Priority.VALUERED" Value="4" />
+    <Option Key="Saitek.BIP.Priority.VALUEREDBLINK" Value="3" />
+    <Option Key="Saitek.FIP.BindLightToMode" Value="False" />
+    <Option Key="Saitek.FIP.EnableVirtualPower" Value="True" />
+    <Option Key="Saitek.FIP.DefaultPagingButtons" Value="True" />
+    <Option Key="Saitek.FIP.PagingButtonsOn" Value="True" />
+    <Option Key="Saitek.RadioPanel.EnableVirtualPower" Value="True" />
+    <Option Key="Saitek.SwitchPanel.RaiseOnFirst" Value="False" />
+    <Option Key="Saitek.SwitchPanel.SwapRL" Value="True" />
+    <Option Key="Saitek.SwitchPanel.EnableVirtualPower" Value="True" />
+    <Option Key="Saitek.TrimWheel.ReverseTrim" Value="True" />
+    <Option Key="Ultimarc.PacDrive.EnableVirtualPower" Value="True" />
+    <Option Key="Ultimarc.PacLed64.EnableVirtualPower" Value="True" />
+    <Option Key="Ultimarc.PacLed64.Brightness" Value="128" />
+  </Options>
+  <ProfileInformation ProfileID="6e53b9a9-2086-4ffc-87c1-135cc4abd76b" Version="0.29">
+    <Author>ShermheadRyder</Author>
+    <Description />
+    <LastChanged>2022-06-18T17:59:33.9281094+01:00</LastChanged>
+  </ProfileInformation>
+</Profile>

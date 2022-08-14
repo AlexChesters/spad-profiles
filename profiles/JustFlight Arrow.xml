@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Profile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.fsgs.com/SPAD">
+  <Variables>
+    <Variable Name="LOCAL:ALEX_AP_KNOB_ALT" Value="0" ValueType="Double" />
+    <Variable Name="LOCAL:ALEX_AP_KNOB_HDG" Value="0" ValueType="Double" />
+    <Variable Name="LOCAL:ALEX_AP_KNOB_CRS" Value="0" ValueType="Double" />
+  </Variables>
+  <Devices>
+    <Device VendorID="0x294B" ProductID="0x1901" DevicePath="\\?\hid#vid_294b&amp;pid_1901#7&amp;87306dd&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="28862E122F173B00" DeviceIndex="0" Version="1">
+      <Events>
+        <Event BoundTo="X_AXIS">
+          <EventDefinitions>
+            <EventDefinition Trigger="VALUE">
+              <EventActions>
+                <EventActionRangedAxis ConfigID="LEVER_NOREVERSE_THROTTLE">
+                  <Options>
+                    <Option Key="USERAWVALUE" Value="True" />
+                    <Option Key="IDLE" Value="0" />
+                    <Option Key="MAX" Value="1023" />
+                    <Option Key="OPTION1" Value="True" />
+                  </Options>
+                </EventActionRangedAxis>
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="RY_AXIS">
+          <EventDefinitions>
+            <EventDefinition Trigger="VALUE">
+              <EventActions>
+                <EventActionRangedAxis ConfigID="LEVER_PROPPITCH">
+                  <Options>
+                    <Option Key="USERAWVALUE" Value="True" />
+                    <Option Key="MIN" Value="0" />
+                    <Option Key="MAX" Value="1023" />
+                    <Option Key="OPTION1" Value="True" />
+                  </Options>
+                </EventActionRangedAxis>
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="Z_AXIS">
+          <EventDefinitions>
+            <EventDefinition Trigger="VALUE">
+              <EventActions>
+                <EventActionRangedAxis ConfigID="LEVER_MIXTURE">
+                  <Options>
+                    <Option Key="USERAWVALUE" Value="True" />
+                    <Option Key="OPTION1" Value="True" />
+                    <Option Key="MIN" Value="0" />
+                    <Option Key="MAX" Value="1023" />
+                  </Options>
+                </EventActionRangedAxis>
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_34">
+          <EventDefinitions>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="MSFS:MASTER_BATTERY_ON" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_35">
+          <EventDefinitions>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="MSFS:MASTER_BATTERY_OFF" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_36">
+          <EventDefinitions>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="MSFS:ALTERNATOR_ON" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_37">
+          <EventDefinitions>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="MSFS:ALTERNATOR_OFF" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_38">
+          <EventDefinitions>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:LANDING_LIGHTS_ON" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_39">
+          <EventDefinitions>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:LANDING_LIGHTS_OFF" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_40">
+          <EventDefinitions>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:BEACON_LIGHTS_ON" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_41">
+          <EventDefinitions>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:BEACON_LIGHTS_OFF" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_42">
+          <EventDefinitions>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:STROBES_ON" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_43">
+          <EventDefinitions>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:STROBES_OFF" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_44">
+          <EventDefinitions>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:PITOT_HEAT_ON" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_45">
+          <EventDefinitions>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:PITOT_HEAT_OFF" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_32">
+          <EventDefinitions>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_UP" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_31">
+          <EventDefinitions>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_DOWN" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_21">
+          <EventDefinitions>
+            <EventDefinition Trigger="PRESSLONG">
+              <EventActions>
+                <EventActionChangeValue TargetDataDefinition="LOCAL:ALEX_AP_KNOB_ALT" Value="1" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionChangeValue TargetDataDefinition="LOCAL:ALEX_AP_KNOB_ALT" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_19">
+          <EventDefinitions>
+            <EventDefinition Trigger="PRESSLONG">
+              <EventActions>
+                <EventActionChangeValue TargetDataDefinition="LOCAL:ALEX_AP_KNOB_HDG" Value="1" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionChangeValue TargetDataDefinition="LOCAL:ALEX_AP_KNOB_HDG" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_18">
+          <EventDefinitions>
+            <EventDefinition Trigger="PRESSLONG">
+              <EventActions>
+                <EventActionChangeValue TargetDataDefinition="LOCAL:ALEX_AP_KNOB_CRS" Value="1" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="RELEASE">
+              <EventActions>
+                <EventActionChangeValue TargetDataDefinition="LOCAL:ALEX_AP_KNOB_CRS" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_15">
+          <EventDefinitions>
+            <EventDefinition Trigger="PRESS">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_INCR" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_16">
+          <EventDefinitions>
+            <EventDefinition Trigger="PRESS">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_DECR" Value="0" ValueOperation="Set" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_22">
+          <EventDefinitions>
+            <EventDefinition Trigger="PRESS">
+              <EventActions>
+                <EventActionChangeValue TargetDataDefinition="SIMCONNECT:ELEVATOR TRIM PCT" Value="1" ValueOperation="Decrement">
+                  <Options>
+                    <Option Key="HASMINMAX" Value="True" />
+                    <Option Key="VALUEMAX" Value="100" />
+                    <Option Key="VALUEMIN" Value="-100" />
+                  </Options>
+                </EventActionChangeValue>
+                <EventActionPlaySound SoundName="D:\spad.NEXT sounds\click.mp3">
+                  <Volume>50</Volume>
+                </EventActionPlaySound>
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="BUTTON_23">
+          <EventDefinitions>
+            <EventDefinition Trigger="PRESS">
+              <EventActions>
+                <EventActionChangeValue TargetDataDefinition="SIMCONNECT:ELEVATOR TRIM PCT" Value="1" ValueOperation="Increment">
+                  <Options>
+                    <Option Key="HASMINMAX" Value="True" />
+                    <Option Key="VALUEMAX" Value="100" />
+                    <Option Key="VALUEMIN" Value="-100" />
+                  </Options>
+                </EventActionChangeValue>
+                <EventActionPlaySound SoundName="D:\spad.NEXT sounds\click.mp3">
+                  <Volume>50</Volume>
+                </EventActionPlaySound>
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+      </Events>
+    </Device>
+  </Devices>
+  <Options>
+    <Option Key="Elgato.Streamdeck.Brightness" Value="100" ValueType="System.Integer" />
+    <Option Key="Elgato.Streamdeck.DarkenDevice" Value="True" ValueType="System.Boolean" />
+    <Option Key="Elgato.Streamdeck.FlashBackgroundOnly" Value="True" ValueType="System.Boolean" />
+    <Option Key="Saitek.BIP.EnableVirtualPower" Value="True" ValueType="System.Boolean" />
+    <Option Key="Saitek.BIP.Brightness" Value="50" ValueType="System.Integer" />
+    <Option Key="Saitek.BIP.Priority.VALUEOFF" Value="0" ValueType="System.Integer" />
+    <Option Key="Saitek.BIP.Priority.VALUEGREEN" Value="1" ValueType="System.Integer" />
+    <Option Key="Saitek.BIP.Priority.VALUEYELLOW" Value="2" ValueType="System.Integer" />
+    <Option Key="Saitek.BIP.Priority.VALUERED" Value="4" ValueType="System.Integer" />
+    <Option Key="Saitek.BIP.Priority.VALUEREDBLINK" Value="3" ValueType="System.Integer" />
+    <Option Key="Saitek.FIP.BindLightToMode" Value="False" ValueType="System.Boolean" />
+    <Option Key="Saitek.FIP.EnableVirtualPower" Value="True" ValueType="System.Boolean" />
+    <Option Key="Saitek.FIP.DefaultPagingButtons" Value="True" ValueType="System.Boolean" />
+    <Option Key="Saitek.FIP.PagingButtonsOn" Value="True" ValueType="System.Boolean" />
+    <Option Key="Saitek.RadioPanel.EnableVirtualPower" Value="True" ValueType="System.Boolean" />
+    <Option Key="Saitek.SwitchPanel.RaiseOnFirst" Value="False" ValueType="System.Boolean" />
+    <Option Key="Saitek.SwitchPanel.SwapRL" Value="True" ValueType="System.Boolean" />
+    <Option Key="Saitek.SwitchPanel.EnableVirtualPower" Value="True" ValueType="System.Boolean" />
+    <Option Key="Saitek.TrimWheel.ReverseTrim" Value="True" ValueType="System.Boolean" />
+    <Option Key="Ultimarc.PacDrive.EnableVirtualPower" Value="True" ValueType="System.Boolean" />
+    <Option Key="Ultimarc.PacLed64.EnableVirtualPower" Value="True" ValueType="System.Boolean" />
+    <Option Key="Ultimarc.PacLed64.Brightness" Value="128" ValueType="System.Integer" />
+  </Options>
+  <CustomClientEvents />
+  <ProfileInformation ProfileID="e3c1559e-3325-4d02-9b25-a332539fa61d" Version="0.8">
+    <Description />
+    <LastChanged>2022-04-25T20:50:12.4704393+01:00</LastChanged>
+  </ProfileInformation>
+</Profile>

@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Profile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="2" xmlns="http://www.fsgs.com/SPAD">
+  <Devices>
+    <Device VendorID="0x294B" ProductID="0x1901" DevicePath="\\?\hid#vid_294b&amp;pid_1901#7&amp;87306dd&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
+      <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
+        <Events>
+          <Event BoundTo="RZ_AXIS">
+            <EventDefinitions>
+              <EventDefinition Trigger="VALUE">
+                <EventActions>
+                  <EventActionCustomAxis TargetDataDefinition="SIMCONNECT:AXIS_THROTTLE1_SET" Value="0">
+                    <Options>
+                      <Option Key="USEMAPPING" Value="True" />
+                      <Option Key="USETRIGGERVALUE" Value="True" />
+                      <Option Key="MAPFROM" Value="-16383" />
+                      <Option Key="MAPTO" Value="16383" />
+                      <Option Key="USERAWVALUE" Value="True" />
+                    </Options>
+                  </EventActionCustomAxis>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="RY_AXIS">
+            <EventDefinitions>
+              <EventDefinition Trigger="VALUE">
+                <EventActions>
+                  <EventActionCustomAxis TargetDataDefinition="SIMCONNECT:AXIS_THROTTLE2_SET" Value="0">
+                    <Options>
+                      <Option Key="USEMAPPING" Value="True" />
+                      <Option Key="USETRIGGERVALUE" Value="True" />
+                      <Option Key="MAPFROM" Value="-16383" />
+                      <Option Key="MAPTO" Value="16383" />
+                      <Option Key="USERAWVALUE" Value="True" />
+                    </Options>
+                  </EventActionCustomAxis>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_46">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:PARKING_BRAKES" Value="0" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:PARKING_BRAKES" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_36">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="MSFS:AVIONICS_MASTER_1_ON" Value="0" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="MSFS:AVIONICS_MASTER_1_OFF" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_34">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="MSFS:MASTER_BATTERY_ON" Value="0" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="MSFS:MASTER_BATTERY_OFF" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_38">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:PITOT_HEAT_ON" Value="0" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:PITOT_HEAT_OFF" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_31">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_UP" Value="0" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_DOWN" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_15">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_INCR" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_16">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_DECR" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_22">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_DN" Value="0" />
+                  <EventActionPlaySound SoundName="D:\spad.NEXT sounds\click.mp3">
+                    <Volume>50</Volume>
+                  </EventActionPlaySound>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_23">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_UP" Value="0" />
+                  <EventActionPlaySound SoundName="D:\spad.NEXT sounds\click.mp3">
+                    <Volume>50</Volume>
+                  </EventActionPlaySound>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_8">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_MASTER" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_3">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_APR_HOLD" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_2">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_NAV1_HOLD" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_1">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_HDG_HOLD" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+        </Events>
+        <Extensions />
+      </DevicePage>
+      <Events />
+      <Extensions />
+    </Device>
+    <Device VendorID="0x044F" ProductID="0x0405" DevicePath="\\?\hid#vid_044f&amp;pid_0405#8&amp;e7c901f&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
+      <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
+        <Events>
+          <Event BoundTo="BUTTON_4">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_MASTER" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+        </Events>
+        <Extensions />
+      </DevicePage>
+      <Events />
+      <Extensions />
+    </Device>
+  </Devices>
+  <Options>
+    <Option Key="Elgato.Streamdeck.Brightness" Value="100" />
+    <Option Key="Elgato.Streamdeck.DarkenDevice" Value="True" />
+    <Option Key="Elgato.Streamdeck.FlashBackgroundOnly" Value="True" />
+    <Option Key="Elgato.Streamdeck.HeldThreshold" Value="500" />
+    <Option Key="Elgato.Streamdeck.HeldFrequency" Value="1" />
+    <Option Key="Saitek.BIP.EnableVirtualPower" Value="True" />
+    <Option Key="Saitek.BIP.Brightness" Value="50" />
+    <Option Key="Saitek.BIP.Priority.VALUEOFF" Value="0" />
+    <Option Key="Saitek.BIP.Priority.VALUEGREEN" Value="1" />
+    <Option Key="Saitek.BIP.Priority.VALUEYELLOW" Value="2" />
+    <Option Key="Saitek.BIP.Priority.VALUERED" Value="4" />
+    <Option Key="Saitek.BIP.Priority.VALUEREDBLINK" Value="3" />
+    <Option Key="Saitek.FIP.BindLightToMode" Value="False" />
+    <Option Key="Saitek.FIP.EnableVirtualPower" Value="True" />
+    <Option Key="Saitek.FIP.DefaultPagingButtons" Value="True" />
+    <Option Key="Saitek.FIP.PagingButtonsOn" Value="True" />
+    <Option Key="Saitek.RadioPanel.EnableVirtualPower" Value="True" />
+    <Option Key="Saitek.SwitchPanel.RaiseOnFirst" Value="False" />
+    <Option Key="Saitek.SwitchPanel.SwapRL" Value="True" />
+    <Option Key="Saitek.SwitchPanel.EnableVirtualPower" Value="True" />
+    <Option Key="Saitek.TrimWheel.ReverseTrim" Value="True" />
+    <Option Key="Ultimarc.PacDrive.EnableVirtualPower" Value="True" />
+    <Option Key="Ultimarc.PacLed64.EnableVirtualPower" Value="True" />
+    <Option Key="Ultimarc.PacLed64.Brightness" Value="128" />
+  </Options>
+  <ProfileInformation ProfileID="1f8f3aa9-a94a-4a8c-8186-2944cacfbc12" Version="0.11">
+    <Author>ShermheadRyder</Author>
+    <Description />
+    <LastChanged>2022-08-06T20:45:02.4890625+01:00</LastChanged>
+  </ProfileInformation>
+</Profile>
