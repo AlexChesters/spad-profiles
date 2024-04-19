@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Profile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="2" xmlns="http://www.fsgs.com/SPAD">
   <Devices>
-    <Device VendorID="0x294B" ProductID="0x1901" DevicePath="\\?\hid#vid_294b&amp;pid_1901#b&amp;87306dd&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
+    <Device VendorID="0x294B" ProductID="0x1901" DevicePath="\\?\hid#vid_294b&amp;pid_1901#7&amp;87306dd&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
       <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
         <Events>
           <Event BoundTo="BUTTON_15">
@@ -40,6 +40,22 @@
               </EventDefinition>
             </EventDefinitions>
           </Event>
+          <Event BoundTo="Z_AXIS">
+            <EventDefinitions>
+              <EventDefinition Trigger="VALUE">
+                <EventActions>
+                  <EventActionRangedAxis ConfigID="LEVER_FLAPS">
+                    <Options>
+                      <Option Key="USERAWVALUE" Value="True" />
+                      <Option Key="INVERTAXIS" Value="True" />
+                      <Option Key="MIN" Value="0" />
+                      <Option Key="MAX" Value="1023" />
+                    </Options>
+                  </EventActionRangedAxis>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
           <Event BoundTo="RZ_AXIS">
             <EventDefinitions>
               <EventDefinition Trigger="VALUE">
@@ -56,17 +72,6 @@
                       <Option Key="MAPTO" Value="16383" />
                     </Options>
                   </EventActionCustomAxis>
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="BUTTON_8">
-            <EventDefinitions>
-              <EventDefinition Trigger="PRESSSHORT">
-                <EventActions>
-                  <EventActionChangeValue TargetDataDefinition="LVAR:S_FCU_AP1" Value="1" />
-                  <EventActionDelay Delay="100" />
-                  <EventActionChangeValue TargetDataDefinition="LVAR:S_FCU_AP1" Value="0" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -147,6 +152,20 @@
                 </EventConditions>
                 <EventActions>
                   <EventActionButtonLight ButtonLight="OFF" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_31">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_DOWN" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_UP" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -317,88 +336,11 @@
               </EventDefinition>
             </EventDefinitions>
           </Event>
-          <Event BoundTo="E_AP_ENCODER">
+          <Event BoundTo="BUTTON_8">
             <EventDefinitions>
-              <EventDefinition Trigger="TUNER_CLOCKWISE">
-                <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LOCAL:JOY_0X294B0X1901_BUTTON_21" />
-                </EventConditions>
-                <EventActions>
-                  <EventActionChangeValue TargetDataDefinition="LVAR:E_FCU_ALTITUDE" Value="1" ValueOperation="Increment" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE">
-                <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LOCAL:JOY_0X294B0X1901_BUTTON_21" />
-                </EventConditions>
-                <EventActions>
-                  <EventActionChangeValue TargetDataDefinition="LVAR:E_FCU_ALTITUDE" Value="1" ValueOperation="Decrement" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_CLOCKWISE">
-                <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LOCAL:JOY_0X294B0X1901_BUTTON_17" />
-                </EventConditions>
-                <EventActions>
-                  <EventActionChangeValue TargetDataDefinition="LVAR:E_FCU_SPEED" Value="1" ValueOperation="Increment" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE">
-                <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LOCAL:JOY_0X294B0X1901_BUTTON_17" />
-                </EventConditions>
-                <EventActions>
-                  <EventActionChangeValue TargetDataDefinition="LVAR:E_FCU_SPEED" Value="1" ValueOperation="Decrement" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_CLOCKWISE">
-                <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LOCAL:JOY_0X294B0X1901_BUTTON_19" />
-                </EventConditions>
-                <EventActions>
-                  <EventActionChangeValue TargetDataDefinition="LVAR:E_FCU_HEADING" Value="1" ValueOperation="Increment" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE">
-                <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LOCAL:JOY_0X294B0X1901_BUTTON_19" />
-                </EventConditions>
-                <EventActions>
-                  <EventActionChangeValue TargetDataDefinition="LVAR:E_FCU_HEADING" Value="1" ValueOperation="Decrement" />
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="BUTTON_46">
-            <EventDefinitions>
-              <EventDefinition Trigger="RELEASE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:PARKING_BRAKES" />
-                </EventActions>
-              </EventDefinition>
               <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:PARKING_BRAKES" />
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="Y_AXIS">
-            <EventDefinitions>
-              <EventDefinition Trigger="VALUE">
-                <EventActions>
-                  <EventActionRangedAxis ConfigID="LEVER_SPOILER">
-                    <Options>
-                      <Option Key="USERAWVALUE" Value="True" />
-                      <Option Key="MIN" Value="0" />
-                      <Option Key="MINTO" Value="0" />
-                      <Option Key="INVERTAXIS" Value="True" />
-                      <Option Key="IDLE" Value="673" />
-                      <Option Key="IDLETO" Value="673" />
-                      <Option Key="MAX" Value="1023" />
-                      <Option Key="MAXTO" Value="1023" />
-                    </Options>
-                  </EventActionRangedAxis>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_MASTER" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -423,48 +365,52 @@
               </EventDefinition>
             </EventDefinitions>
           </Event>
-          <Event BoundTo="Z_AXIS">
+          <Event BoundTo="BUTTON_30">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AUTO_THROTTLE_TO_GA" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_23">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_UP" />
+                  <EventActionPlaySound SoundName="D:\spad.NEXT sounds\click.mp3">
+                    <Volume>50</Volume>
+                  </EventActionPlaySound>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_22">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_DN" />
+                  <EventActionPlaySound SoundName="D:\spad.NEXT sounds\click.mp3">
+                    <Volume>50</Volume>
+                  </EventActionPlaySound>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="Y_AXIS">
             <EventDefinitions>
               <EventDefinition Trigger="VALUE">
                 <EventActions>
-                  <EventActionRangedAxis ConfigID="LEVER_FLAPS">
+                  <EventActionRangedAxis ConfigID="LEVER_SPOILER">
                     <Options>
                       <Option Key="USERAWVALUE" Value="True" />
                       <Option Key="MIN" Value="0" />
-                      <Option Key="MAXTO" Value="1023" />
                       <Option Key="INVERTAXIS" Value="True" />
+                      <Option Key="IDLE" Value="139" />
                       <Option Key="MAX" Value="1023" />
-                      <Option Key="MINTO" Value="0" />
                     </Options>
                   </EventActionRangedAxis>
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="BUTTON_31">
-            <EventDefinitions>
-              <EventDefinition Trigger="RELEASE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_DOWN" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="PRESS">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_UP" />
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="BUTTON_10">
-            <EventDefinitions>
-              <EventDefinition Trigger="PRESS">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:THROTTLE_REVERSE_THRUST_TOGGLE" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="RELEASE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:THROTTLE_REVERSE_THRUST_TOGGLE" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -475,14 +421,14 @@
       <Events />
       <Extensions />
     </Device>
-    <Device VendorID="0x044F" ProductID="0x0405" DevicePath="\\?\hid#vid_044f&amp;pid_0405#9&amp;e7c901f&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
+    <Device VendorID="0x044F" ProductID="0x0405" DevicePath="\\?\hid#vid_044f&amp;pid_0405#8&amp;e7c901f&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
       <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
         <Events>
           <Event BoundTo="BUTTON_3">
             <EventDefinitions>
               <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="MSFS:THROTTLE_REVERSE_THRUST_TOGGLE" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AUTO_THROTTLE_ARM" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -491,33 +437,7 @@
             <EventDefinitions>
               <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionChangeValue TargetDataDefinition="LVAR:S_FCU_AP1" Value="1" />
-                  <EventActionChangeValue TargetDataDefinition="LVAR:S_FCU_AP2" Value="1" />
-                  <EventActionDelay Delay="100" />
-                  <EventActionChangeValue TargetDataDefinition="LVAR:S_FCU_AP1" Value="0" />
-                  <EventActionChangeValue TargetDataDefinition="LVAR:S_FCU_AP2" Value="0" />
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="BUTTON_8">
-            <EventDefinitions>
-              <EventDefinition Trigger="PRESS">
-                <EventActions>
-                  <EventActionChangeValue TargetDataDefinition="LVAR:S_ECAM_CLR_LEFT" Value="1" />
-                  <EventActionDelay Delay="100" />
-                  <EventActionChangeValue TargetDataDefinition="LVAR:S_ECAM_CLR_LEFT" Value="0" />
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="BUTTON_16">
-            <EventDefinitions>
-              <EventDefinition Trigger="PRESS">
-                <EventActions>
-                  <EventActionChangeValue TargetDataDefinition="LVAR:S_ECAM_CLR_LEFT" Value="1" />
-                  <EventActionDelay Delay="100" />
-                  <EventActionChangeValue TargetDataDefinition="LVAR:S_ECAM_CLR_LEFT" Value="0" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_MASTER" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -526,159 +446,6 @@
         <Extensions />
       </DevicePage>
       <Events />
-      <Extensions />
-    </Device>
-    <Device VendorID="0x06A3" ProductID="0x0D05" DevicePath="\\?\hid#vid_06a3&amp;pid_0d05#d&amp;3ab61bee&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
-      <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
-        <Events>
-          <Event BoundTo="RADIOPANEL_UPPER_SELECTOR_COM1">
-            <EventDefinitions>
-              <EventDefinition Trigger="LEFTDISPLAY">
-                <EventActions>
-                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:COM ACTIVE FREQUENCY:1" DisplayFormatting="1" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="RIGHTDISPLAY">
-                <EventActions>
-                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:COM STANDBY FREQUENCY:1" DisplayFormatting="1" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_INNER_CLOCKWISE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM_RADIO_FRACT_INC" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="ACTIVATESHORT">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM1_RADIO_SWAP" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_OUTER_CLOCKWISE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM_RADIO_WHOLE_INC" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_OUTER_COUNTERCLOCKWISE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM_RADIO_WHOLE_DEC" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_INNER_COUNTERCLOCKWISE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM_RADIO_FRACT_DEC" />
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-            <Options>
-              <Option Key="TUNER_INNER_SENSITIVITY" Value="100" />
-              <Option Key="TUNER_OUTER_SENSITIVITY" Value="100" />
-              <Option Key="TUNER_MULTIPLY_1" Value="1" />
-              <Option Key="TUNER_MULTIPLY_2" Value="2" />
-              <Option Key="TUNER_MULTIPLY_3" Value="3" />
-            </Options>
-          </Event>
-          <Event BoundTo="RADIOPANEL_UPPER_SELECTOR_COM2">
-            <EventDefinitions>
-              <EventDefinition Trigger="LEFTDISPLAY">
-                <EventActions>
-                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:COM ACTIVE FREQUENCY:2" DisplayFormatting="1" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="RIGHTDISPLAY">
-                <EventActions>
-                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:COM STANDBY FREQUENCY:2" DisplayFormatting="1" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_INNER_CLOCKWISE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM2_RADIO_FRACT_INC" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="ACTIVATESHORT">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM2_RADIO_SWAP" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_OUTER_CLOCKWISE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM2_RADIO_WHOLE_INC" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_OUTER_COUNTERCLOCKWISE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM2_RADIO_WHOLE_DEC" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_INNER_COUNTERCLOCKWISE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM2_RADIO_FRACT_DEC" />
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-            <Options>
-              <Option Key="TUNER_INNER_SENSITIVITY" Value="100" />
-              <Option Key="TUNER_OUTER_SENSITIVITY" Value="100" />
-              <Option Key="TUNER_MULTIPLY_1" Value="1" />
-              <Option Key="TUNER_MULTIPLY_2" Value="2" />
-              <Option Key="TUNER_MULTIPLY_3" Value="3" />
-            </Options>
-          </Event>
-          <Event BoundTo="RADIOPANEL_LOWER_SELECTOR_XPDR">
-            <EventDefinitions>
-              <EventDefinition Trigger="RIGHTDISPLAY">
-                <EventActions>
-                  <EventActionDisplayValue TargetDataDefinition="FSUIPC:0000:0330" DisplayFormat="0000" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="LEFTDISPLAY">
-                <EventActions>
-                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:TRANSPONDER CODE:1" DisplayFormat="0000" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_INNER_CLOCKWISE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:KOHLSMAN_INC" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_INNER_COUNTERCLOCKWISE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:KOHLSMAN_DEC" />
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-            <Options>
-              <Option Key="TUNER_INNER_SENSITIVITY" Value="100" />
-              <Option Key="TUNER_OUTER_SENSITIVITY" Value="100" />
-              <Option Key="TUNER_MULTIPLY_1" Value="1" />
-              <Option Key="TUNER_MULTIPLY_2" Value="2" />
-              <Option Key="TUNER_MULTIPLY_3" Value="3" />
-            </Options>
-          </Event>
-        </Events>
-        <Extensions />
-      </DevicePage>
-      <Events>
-        <Event BoundTo="CONFIGURE_PANEL_STATUS">
-          <EventDefinitions>
-            <EventDefinition Trigger="VALUE">
-              <EventConditions>
-                <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="SIMCONNECT:AVIONICS MASTER SWITCH" />
-              </EventConditions>
-              <EventActions>
-                <EventActionCommand CommandName="SPAD_neXt.Device_PowerON" />
-              </EventActions>
-            </EventDefinition>
-            <EventDefinition Trigger="VALUE">
-              <EventConditions>
-                <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="SIMCONNECT:AVIONICS MASTER SWITCH" />
-              </EventConditions>
-              <EventActions>
-                <EventActionCommand CommandName="SPAD_neXt.Device_PowerOFF" />
-              </EventActions>
-            </EventDefinition>
-          </EventDefinitions>
-        </Event>
-      </Events>
       <Extensions />
     </Device>
   </Devices>
@@ -707,9 +474,9 @@
     <Option Key="Elgato.Streamdeck.HeldThreshold" Value="500" />
     <Option Key="Elgato.Streamdeck.HeldFrequency" Value="1" />
   </Options>
-  <ProfileInformation ProfileID="c9469ffc-c11a-4510-a95b-65457ffb5c38" Version="0.71">
+  <ProfileInformation ProfileID="35282cf9-adc4-4d7f-9bc4-262587eec3f8" Version="0.10">
     <Author>ShermheadRyder</Author>
     <Description />
-    <LastChanged>2023-09-01T13:56:35.4675049+01:00</LastChanged>
+    <LastChanged>2022-12-10T17:22:14.021772+00:00</LastChanged>
   </ProfileInformation>
 </Profile>

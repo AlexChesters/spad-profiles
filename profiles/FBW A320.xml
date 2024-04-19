@@ -1,0 +1,865 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Profile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="2" xmlns="http://www.fsgs.com/SPAD">
+  <Devices>
+    <Device VendorID="0x06A3" ProductID="0x0D06" DevicePath="\\?\hid#vid_06a3&amp;pid_0d06#9&amp;123c3246&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="1">
+      <Events>
+        <Event BoundTo="MULTIPANEL_SELECTOR_CRS">
+          <EventDefinitions>
+            <EventDefinition Trigger="VALUEON">
+              <EventActions>
+                <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:NAV OBS:1" TargetDisplay="DISPLAY" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="TUNER_CLOCKWISE">
+              <EventActions>
+                <EventActionChangeValue TargetDataDefinition="SIMCONNECT:NAV OBS:1" Value="1" ValueOperation="Increment">
+                  <Options>
+                    <Option Key="HASMINMAX" Value="True" />
+                    <Option Key="VALUEMIN" Value="0" />
+                    <Option Key="VALUEMAX" Value="359" />
+                    <Option Key="ROLLOVER" Value="True" />
+                  </Options>
+                </EventActionChangeValue>
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE">
+              <EventActions>
+                <EventActionChangeValue TargetDataDefinition="SIMCONNECT:NAV OBS:1" Value="1" ValueOperation="Decrement">
+                  <Options>
+                    <Option Key="HASMINMAX" Value="True" />
+                    <Option Key="VALUEMIN" Value="0" />
+                    <Option Key="VALUEMAX" Value="359" />
+                    <Option Key="ROLLOVER" Value="True" />
+                  </Options>
+                </EventActionChangeValue>
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+          <Options>
+            <Option Key="VALUEMIN" Value="0" />
+            <Option Key="VALUEMAX" Value="359" />
+            <Option Key="ROLLOVER" Value="true" />
+          </Options>
+        </Event>
+        <Event BoundTo="MULTIPANEL_FLAPS_UP">
+          <EventDefinitions>
+            <EventDefinition Trigger="VALUEON">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_DECR" Value="0" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="VALUEONLONG">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_UP" Value="0" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+          <Options>
+            <Option Key="VALUEMIN" Value="0" />
+            <Option Key="VALUEMAX" Value="16383" />
+          </Options>
+        </Event>
+        <Event BoundTo="MULTIPANEL_FLAPS_DOWN">
+          <EventDefinitions>
+            <EventDefinition Trigger="VALUEON">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_INCR" Value="0" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="VALUEONLONG">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_DOWN" Value="0" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+          <Options>
+            <Option Key="VALUEMIN" Value="0" />
+            <Option Key="VALUEMAX" Value="16383" />
+          </Options>
+        </Event>
+        <Event BoundTo="CONFIGURE_PANEL_STATUS">
+          <EventDefinitions>
+            <EventDefinition Trigger="VALUE">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="SIMCONNECT:AVIONICS MASTER SWITCH" />
+              </EventConditions>
+              <EventActions>
+                <EventActionCommand CommandName="SPAD_neXt.Device_PowerON" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="VALUE">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="SIMCONNECT:AVIONICS MASTER SWITCH" />
+              </EventConditions>
+              <EventActions>
+                <EventActionCommand CommandName="SPAD_neXt.Device_PowerOFF" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="MULTIPANEL_PITCHTRIM">
+          <EventDefinitions>
+            <EventDefinition Trigger="NOSEDOWN">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_DN" Value="0" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="NOSEUP">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_UP" Value="0" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+          <Options>
+            <Option Key="SENSITIVITY" Value="27" />
+            <Option Key="LINEFACTOR" Value="1638" />
+          </Options>
+        </Event>
+        <Event BoundTo="MULTIPANEL_SELECTOR_HDG">
+          <EventDefinitions>
+            <EventDefinition Trigger="VALUEON">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:A320_FCU_SHOW_SELECTED_HEADING" />
+              </EventConditions>
+              <EventActions>
+                <EventActionDisplayValue TargetDataDefinition="LVAR:A32NX_AUTOPILOT_HEADING_SELECTED" TargetDisplay="VALUEON" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="TUNER_CLOCKWISE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:HEADING_BUG_INC" Value="0" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:HEADING_BUG_DEC" Value="0" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="VALUEON">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="-1" ConditionValueSource="LVAR:A32NX_AUTOPILOT_HEADING_SELECTED" />
+              </EventConditions>
+              <EventActions>
+                <EventActionDisplayValue TargetDataDefinition="MSFS:AUTOPILOT HEADING LOCK DIR:2" TargetDisplay="VALUEON" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+          <Options>
+            <Option Key="VALUEMIN" Value="0" />
+            <Option Key="VALUEMAX" Value="359" />
+            <Option Key="ROLLOVER" Value="true" />
+          </Options>
+        </Event>
+        <Event BoundTo="MULTIPANEL_SELECTOR_VS">
+          <EventDefinitions>
+            <EventDefinition Trigger="VALUEON">
+              <EventActions>
+                <EventActionDisplayValue TargetDataDefinition="LVAR:A32NX_AUTOPILOT_VS_SELECTED" TargetDisplay="VALUEON" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="TUNER_CLOCKWISE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:AP_VS_VAR_INC" Value="0" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:AP_VS_VAR_DEC" Value="0" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+          <Options>
+            <Option Key="VALUEMIN" Value="-9999" />
+            <Option Key="VALUEMAX" Value="9999" />
+          </Options>
+        </Event>
+        <Event BoundTo="MULTIPANEL_SELECTOR_IAS">
+          <EventDefinitions>
+            <EventDefinition Trigger="VALUEON">
+              <EventActions>
+                <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:AUTOPILOT AIRSPEED HOLD VAR" TargetDisplay="DISPLAY" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="TUNER_CLOCKWISE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:AP_SPD_VAR_INC" Value="0" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:AP_SPD_VAR_DEC" Value="0" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+          <Options>
+            <Option Key="VALUEMIN" Value="0" />
+            <Option Key="VALUEMAX" Value="360" />
+          </Options>
+        </Event>
+        <Event BoundTo="MULTIPANEL_BUTTON_APR">
+          <EventDefinitions>
+            <EventDefinition Trigger="BUTTONLIGHT" IsFinal="true">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LVAR:A32NX_FCU_APPR_MODE_ACTIVE" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_OFF" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="BUTTONLIGHT" IsFinal="true">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:A32NX_FCU_APPR_MODE_ACTIVE" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_ON" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="PRESS">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:AP_APR_HOLD" Value="0" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="MULTIPANEL_BUTTON_HDG">
+          <EventDefinitions>
+            <EventDefinition Trigger="BUTTONLIGHT">
+              <EventConditions>
+                <EventCondition ConditionComparator="Unequal" ConditionTargetValue="10" ConditionValueSource="LVAR:A32NX_FMA_LATERAL_MODE" />
+                <EventCondition ConditionComparator="Unequal" ConditionTargetValue="11" ConditionValueSource="LVAR:A32NX_FMA_LATERAL_MODE" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_OFF" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="BUTTONLIGHT" ConditionBinding="OR">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="10" ConditionValueSource="LVAR:A32NX_FMA_LATERAL_MODE" />
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="11" ConditionValueSource="LVAR:A32NX_FMA_LATERAL_MODE" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_ON" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="PRESS">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:A32NXHDGPULL" Value="0" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="MULTIPANEL_BUTTON_REV">
+          <EventDefinitions>
+            <EventDefinition Trigger="PRESS">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:A32NXLOCPUSH" Value="0" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="BUTTONLIGHT">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:A32NX_FCU_LOC_MODE_ACTIVE" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_ON" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="BUTTONLIGHT">
+              <EventConditions>
+                <EventCondition ConditionComparator="Unequal" ConditionTargetValue="1" ConditionValueSource="LVAR:A32NX_FCU_LOC_MODE_ACTIVE" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_OFF" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="MULTIPANEL_BUTTON_NAV">
+          <EventDefinitions>
+            <EventDefinition Trigger="BUTTONLIGHT">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="20" ConditionValueSource="LVAR:A32NX_FMA_LATERAL_MODE" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_ON" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="BUTTONLIGHT">
+              <EventConditions>
+                <EventCondition ConditionComparator="Unequal" ConditionTargetValue="20" ConditionValueSource="LVAR:A32NX_FMA_LATERAL_MODE" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_OFF" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="PRESS">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:A32NXHDGPUSH" Value="0" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="MULTIPANEL_BUTTON_IAS">
+          <EventDefinitions>
+            <EventDefinition Trigger="BUTTONLIGHT">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="MSFS:AUTOPILOT SPEED SLOT INDEX" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_ON" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="BUTTONLIGHT">
+              <EventConditions>
+                <EventCondition ConditionComparator="Unequal" ConditionTargetValue="1" ConditionValueSource="MSFS:AUTOPILOT SPEED SLOT INDEX" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_OFF" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="PRESS">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:A32NXSPDPULL" Value="0" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="PRESSLONG">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:A32NXSPDPUSH" Value="0" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="MULTIPANEL_BUTTON_ALT">
+          <EventDefinitions>
+            <EventDefinition Trigger="BUTTONLIGHT">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="10" ConditionValueSource="LVAR:A32NX_FMA_VERTICAL_MODE" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_ON" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="BUTTONLIGHT">
+              <EventConditions>
+                <EventCondition ConditionComparator="Unequal" ConditionTargetValue="10" ConditionValueSource="LVAR:A32NX_FMA_VERTICAL_MODE" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_OFF" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="PRESS">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:A32NXALTPULL" Value="0" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="PRESSLONG">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:A32NXALTPUSH" Value="0" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="MULTIPANEL_BUTTON_VS">
+          <EventDefinitions>
+            <EventDefinition Trigger="BUTTONLIGHT">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="14" ConditionValueSource="LVAR:A32NX_FMA_VERTICAL_MODE" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_ON" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="BUTTONLIGHT">
+              <EventConditions>
+                <EventCondition ConditionComparator="Unequal" ConditionTargetValue="14" ConditionValueSource="LVAR:A32NX_FMA_VERTICAL_MODE" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_OFF" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="PRESS">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:A32NXVSPULL" Value="0" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="PRESSLONG">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:A32NXVSPUSH" Value="0" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="MULTIPANEL_BUTTON_AP">
+          <EventDefinitions>
+            <EventDefinition Trigger="VALUEON">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:A32NXAP1PUSH" Value="0" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="BUTTONLIGHT" IsFinal="true">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LVAR:A32NX_AUTOPILOT_1_ACTIVE" />
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LVAR:A32NX_AUTOPILOT_2_ACTIVE" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_OFF" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="BUTTONLIGHT" IsFinal="true" ConditionBinding="OR">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:A32NX_AUTOPILOT_1_ACTIVE" />
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:A32NX_AUTOPILOT_2_ACTIVE" />
+              </EventConditions>
+              <EventActions>
+                <EventActionButtonLight ButtonLight="BUTTON_SHORT_ON" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="VALUEOFF">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:A32NXAP1PUSH" Value="0" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+        <Event BoundTo="MULTIPANEL_SELECTOR_ALT">
+          <EventDefinitions>
+            <EventDefinition Trigger="VALUEON">
+              <EventActions>
+                <EventActionDisplayValue TargetDataDefinition="MSFS:AUTOPILOT ALTITUDE LOCK VAR:3" TargetDisplay="VALUEON" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="TUNER_CLOCKWISE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:A32NX.FCU_ALT_INC" Value="0" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE">
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:A32NX.FCU_ALT_DEC" Value="0" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+          <Options>
+            <Option Key="VALUEMIN" Value="0" />
+            <Option Key="VALUEMAX" Value="99999" />
+          </Options>
+        </Event>
+        <Event BoundTo="MULTIPANEL_AUTOTHROTTLE">
+          <EventDefinitions>
+            <EventDefinition Trigger="VALUEON">
+              <EventActions>
+                <EventActionChangeValue TargetDataDefinition="LVAR:XMLVAR_SWITCH_OVHD_INTLT_SEATBELT_Position" Value="1" />
+                <EventActionChangeValue TargetDataDefinition="LVAR:XMLVAR_SWITCH_OVHD_INTLT_NOSMOKING_Position" Value="1" />
+                <EventActionChangeValue TargetDataDefinition="LVAR:XMLVAR_SWITCH_OVHD_INTLT_EMEREXIT_Position" Value="1" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="VALUEOFF">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="SIMCONNECT:CABIN SEATBELTS ALERT SWITCH" />
+              </EventConditions>
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:CABIN_SEATBELTS_ALERT_SWITCH_TOGGLE" Value="0" />
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="VALUEON">
+              <EventConditions>
+                <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="SIMCONNECT:CABIN SEATBELTS ALERT SWITCH" />
+              </EventConditions>
+              <EventActions>
+                <EventActionControl TargetDataDefinition="SIMCONNECT:CABIN_SEATBELTS_ALERT_SWITCH_TOGGLE" Value="0" />
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+      </Events>
+      <Options>
+        <Option Key="Saitek.MultiPanel.ReverseTrim" Value="True" />
+        <Option Key="Saitek.MultiPanel.ShowTrimAnimation" Value="True" />
+        <Option Key="Saitek.MultiPanel.BindLightToMode" Value="False" />
+        <Option Key="Saitek.MultiPanel.EnableVirtualPower" Value="True" />
+      </Options>
+      <Extensions />
+    </Device>
+    <Device VendorID="0x044F" ProductID="0x0405" DevicePath="\\?\hid#vid_044f&amp;pid_0405#9&amp;e7c901f&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
+      <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
+        <Events>
+          <Event BoundTo="RZ_AXIS">
+            <EventDefinitions>
+              <EventDefinition Trigger="VALUE">
+                <EventActions>
+                  <EventActionCustomAxis TargetDataDefinition="SIMCONNECT:AXIS_MIXTURE4_SET" Value="0">
+                    <Options>
+                      <Option Key="USETRIGGERVALUE" Value="True" />
+                      <Option Key="USERAWVALUE" Value="False" />
+                      <Option Key="USEMAPPING" Value="False" />
+                    </Options>
+                  </EventActionCustomAxis>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_4">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_MASTER" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+        </Events>
+        <Extensions />
+      </DevicePage>
+      <Events />
+      <Extensions />
+    </Device>
+    <Device VendorID="0x294B" ProductID="0x1901" DevicePath="\\?\hid#vid_294b&amp;pid_1901#b&amp;87306dd&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
+      <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
+        <Events>
+          <Event BoundTo="Y_AXIS">
+            <EventDefinitions>
+              <EventDefinition Trigger="VALUE">
+                <EventActions>
+                  <EventActionRangedAxis ConfigID="LEVER_SPOILER">
+                    <Options>
+                      <Option Key="USERAWVALUE" Value="True" />
+                      <Option Key="MIN" Value="1023" />
+                      <Option Key="IDLE" Value="849" />
+                      <Option Key="MAX" Value="0" />
+                    </Options>
+                  </EventActionRangedAxis>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+            <Options>
+              <Option Key="NAME" Value="Speed brake" />
+            </Options>
+          </Event>
+          <Event BoundTo="BUTTON_35">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:A32NX_OVHD_ELEC_BAT_1_PB_IS_AUTO" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_37">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="LVAR:A32NX_OVHD_ELEC_BAT_2_PB_IS_AUTO" Value="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_39">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="MSFS:TOGGLE_EXTERNAL_POWER" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_15">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESSSHORT">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_INCR" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_16">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESSSHORT">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_DECR" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_32">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_UP" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_8">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESSSHORT">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="MSFS:A32NX.FCU_AP_1_PUSH" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="Z_AXIS">
+            <EventDefinitions>
+              <EventDefinition Trigger="VALUE">
+                <EventActions>
+                  <EventActionRangedAxis ConfigID="LEVER_FLAPS">
+                    <Options>
+                      <Option Key="USERAWVALUE" Value="True" />
+                      <Option Key="MIN" Value="0" />
+                      <Option Key="INVERTAXIS" Value="True" />
+                      <Option Key="MAX" Value="1023" />
+                    </Options>
+                  </EventActionRangedAxis>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_31">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_DOWN" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_UP" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_46">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:PARKING_BRAKES" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:PARKING_BRAKES" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="RZ_AXIS">
+            <EventDefinitions>
+              <EventDefinition Trigger="VALUE">
+                <EventActions>
+                  <EventActionCustomAxis TargetDataDefinition="SIMCONNECT:THROTTLE1_AXIS_SET_EX1" Value="0">
+                    <Options>
+                      <Option Key="USETRIGGERVALUE" Value="True" />
+                      <Option Key="USERAWVALUE" Value="True" />
+                      <Option Key="ALWAYSACTIVE" Value="False" />
+                      <Option Key="RANGEFROM" Value="0" />
+                      <Option Key="RANGETO" Value="1023" />
+                      <Option Key="USEMAPPING" Value="True" />
+                      <Option Key="MAPFROM" Value="-16383" />
+                      <Option Key="MAPTO" Value="16383" />
+                    </Options>
+                  </EventActionCustomAxis>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="RY_AXIS">
+            <EventDefinitions>
+              <EventDefinition Trigger="VALUE">
+                <EventActions>
+                  <EventActionCustomAxis TargetDataDefinition="SIMCONNECT:THROTTLE2_AXIS_SET_EX1" Value="0">
+                    <Options>
+                      <Option Key="USETRIGGERVALUE" Value="True" />
+                      <Option Key="USERAWVALUE" Value="True" />
+                      <Option Key="ALWAYSACTIVE" Value="False" />
+                      <Option Key="RANGEFROM" Value="0" />
+                      <Option Key="RANGETO" Value="1023" />
+                      <Option Key="USEMAPPING" Value="True" />
+                      <Option Key="MAPFROM" Value="-16383" />
+                      <Option Key="MAPTO" Value="16383" />
+                    </Options>
+                  </EventActionCustomAxis>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_30">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:THROTTLE_REVERSE_THRUST_TOGGLE" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:THROTTLE_REVERSE_THRUST_TOGGLE" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+        </Events>
+        <Extensions />
+      </DevicePage>
+      <Events />
+      <Extensions />
+    </Device>
+    <Device VendorID="0x06A3" ProductID="0x0D05" DevicePath="\\?\hid#vid_06a3&amp;pid_0d05#c&amp;2824b2c3&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
+      <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
+        <Events>
+          <Event BoundTo="RADIOPANEL_UPPER_SELECTOR_COM1">
+            <EventDefinitions>
+              <EventDefinition Trigger="LEFTDISPLAY">
+                <EventActions>
+                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:COM ACTIVE FREQUENCY:1" DisplayFormatting="1" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="RIGHTDISPLAY">
+                <EventActions>
+                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:COM STANDBY FREQUENCY:1" DisplayFormatting="1" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_INNER_CLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM_RADIO_FRACT_INC" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="ACTIVATESHORT">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM1_RADIO_SWAP" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_OUTER_CLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM_RADIO_WHOLE_INC" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_OUTER_COUNTERCLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM_RADIO_WHOLE_DEC" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_INNER_COUNTERCLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM_RADIO_FRACT_DEC" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+            <Options>
+              <Option Key="TUNER_INNER_SENSITIVITY" Value="100" />
+              <Option Key="TUNER_OUTER_SENSITIVITY" Value="100" />
+              <Option Key="TUNER_MULTIPLY_1" Value="1" />
+              <Option Key="TUNER_MULTIPLY_2" Value="2" />
+              <Option Key="TUNER_MULTIPLY_3" Value="3" />
+            </Options>
+          </Event>
+          <Event BoundTo="RADIOPANEL_UPPER_SELECTOR_COM2">
+            <EventDefinitions>
+              <EventDefinition Trigger="LEFTDISPLAY">
+                <EventActions>
+                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:COM ACTIVE FREQUENCY:2" DisplayFormatting="1" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="RIGHTDISPLAY">
+                <EventActions>
+                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:COM STANDBY FREQUENCY:2" DisplayFormatting="1" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_INNER_CLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM2_RADIO_FRACT_INC" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="ACTIVATESHORT">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM2_RADIO_SWAP" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_OUTER_CLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM2_RADIO_WHOLE_INC" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_OUTER_COUNTERCLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM2_RADIO_WHOLE_DEC" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_INNER_COUNTERCLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM2_RADIO_FRACT_DEC" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+            <Options>
+              <Option Key="TUNER_INNER_SENSITIVITY" Value="100" />
+              <Option Key="TUNER_OUTER_SENSITIVITY" Value="100" />
+              <Option Key="TUNER_MULTIPLY_1" Value="1" />
+              <Option Key="TUNER_MULTIPLY_2" Value="2" />
+              <Option Key="TUNER_MULTIPLY_3" Value="3" />
+            </Options>
+          </Event>
+        </Events>
+        <Extensions />
+      </DevicePage>
+      <Events />
+      <Extensions />
+    </Device>
+  </Devices>
+  <Options>
+    <Option Key="Elgato.Streamdeck.Brightness" Value="100" />
+    <Option Key="Elgato.Streamdeck.DarkenDevice" Value="True" />
+    <Option Key="Saitek.BIP.EnableVirtualPower" Value="True" />
+    <Option Key="Saitek.BIP.Brightness" Value="50" />
+    <Option Key="Saitek.BIP.Priority.VALUEOFF" Value="0" />
+    <Option Key="Saitek.BIP.Priority.VALUEGREEN" Value="1" />
+    <Option Key="Saitek.BIP.Priority.VALUEYELLOW" Value="2" />
+    <Option Key="Saitek.BIP.Priority.VALUERED" Value="4" />
+    <Option Key="Saitek.BIP.Priority.VALUEREDBLINK" Value="3" />
+    <Option Key="Saitek.FIP.BindLightToMode" Value="False" />
+    <Option Key="Saitek.FIP.EnableVirtualPower" Value="True" />
+    <Option Key="Saitek.FIP.DefaultPagingButtons" Value="True" />
+    <Option Key="Saitek.FIP.PagingButtonsOn" Value="True" />
+    <Option Key="Saitek.RadioPanel.EnableVirtualPower" Value="True" />
+    <Option Key="Saitek.SwitchPanel.RaiseOnFirst" Value="False" />
+    <Option Key="Saitek.SwitchPanel.SwapRL" Value="True" />
+    <Option Key="Saitek.SwitchPanel.EnableVirtualPower" Value="True" />
+    <Option Key="Saitek.TrimWheel.ReverseTrim" Value="True" />
+    <Option Key="Ultimarc.PacDrive.EnableVirtualPower" Value="True" />
+    <Option Key="Ultimarc.PacLed64.EnableVirtualPower" Value="True" />
+    <Option Key="Ultimarc.PacLed64.Brightness" Value="128" />
+    <Option Key="Elgato.Streamdeck.HeldThreshold" Value="500" />
+    <Option Key="Elgato.Streamdeck.HeldFrequency" Value="1" />
+  </Options>
+  <CustomClientEvents>
+    <CustomClientEvent Name="A32NXAP1PUSH" EventID="A32NX.FCU_AP_1_PUSH" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NXAP2PUSH" EventID="A32NX.FCU_AP_2_PUSH" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NXSPDPUSH" EventID="A32NX.FCU_SPD_PUSH" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NXSPDPULL" EventID="A32NX.FCU_SPD_PULL" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NSMTOGGLE" EventID="A32NX.FCU_SPD_MACH_TOGGLE_PUSH" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NXHDGPUSH" EventID="A32NX.FCU_HDG_PUSH" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NXHDGPULL" EventID="A32NX.FCU_HDG_PULL" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NXTRKTOGG" EventID="A32NX.FCU_TRK_FPA_TOGGLE_PUSH" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NXALTPUSH" EventID="A32NX.FCU_ALT_PUSH" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NXALTPULL" EventID="A32NX.FCU_ALT_PULL" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NXVSPUSH" EventID="A32NX.FCU_VS_PUSH" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NXVSPULL" EventID="A32NX.FCU_VS_PULL" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NXLOCPUSH" EventID="A32NX.FCU_LOC_PUSH" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NXAPRPUSH" EventID="A32NX.FCU_APPR_PUSH" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NXEXPPUSH" EventID="A32NX.FCU_EXPED_PUSH" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NX.FCU_AP_DISCONNECT_PUSH" EventID="A32NX.FCU_AP_DISCONNECT_PUSH" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NX.FCU_ATHR_PUSH" EventID="A32NX.FCU_ATHR_PUSH" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NX.FCU_ATHR_DISCONNECT_PUSH" EventID="A32NX.FCU_ATHR_DISCONNECT_PUSH" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NX.FCU_HDG_INC" EventID="A32NX.FCU_HDG_INC" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NX.FCU_HDG_DEC" EventID="A32NX.FCU_HDG_DEC" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NX.FCU_HDG_SET" EventID="A32NX.FCU_HDG_SET" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NX.FCU_ALT_INC" EventID="A32NX.FCU_ALT_INC" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NX.FCU_ALT_DEC" EventID="A32NX.FCU_ALT_DEC" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NX.FCU_ALT_SET" EventID="A32NX.FCU_ALT_SET" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NX.FCU_VS_INC" EventID="A32NX.FCU_VS_INC" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NX.FCU_VS_DEC" EventID="A32NX.FCU_VS_DEC" SubCategory="FCU" />
+    <CustomClientEvent Name="A32NX.FCU_VS_SET" EventID="A32NX.FCU_VS_SET" SubCategory="FCU" />
+  </CustomClientEvents>
+  <ProfileInformation ProfileID="692a6ba5-8da3-47b4-b06b-4d8f15af939d" Version="0.10">
+    <Author>ShermheadRyder</Author>
+    <Description>&lt;HTML&gt;&lt;BODY&gt;&lt;DIV STYLE="text-align:Left;font-family:Segoe UI;font-style:normal;font-weight:normal;font-size:13;color:#D1D1D1;"&gt;&lt;DIV&gt;&lt;DIV&gt;&lt;P&gt;&lt;SPAN&gt;FlyByWire A320neo (A32NX)) for MSFS2020&lt;/SPAN&gt;&lt;BR /&gt;&lt;SPAN&gt;(works with&lt;/SPAN&gt;&lt;SPAN /&gt;&lt;SPAN&gt;development&lt;/SPAN&gt;&lt;SPAN&gt;l version &lt;/SPAN&gt;&lt;SPAN&gt;from &lt;/SPAN&gt;&lt;SPAN&gt;16&lt;/SPAN&gt;&lt;SPAN&gt;/&lt;/SPAN&gt;&lt;SPAN&gt;5&lt;/SPAN&gt;&lt;SPAN&gt;/&lt;/SPAN&gt;&lt;SPAN&gt;2021)&lt;/SPAN&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN&gt;Feedback on SPAD discord welcome (same username). &lt;/SPAN&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN&gt;Update &lt;/SPAN&gt;&lt;SPAN&gt;16&lt;/SPAN&gt;&lt;SPAN&gt;.5.2021 &lt;/SPAN&gt;&lt;/P&gt;&lt;UL&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;Changed Seatbelt event as per #4040&lt;/SPAN&gt;&lt;SPAN /&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;Extended&lt;/SPAN&gt;&lt;SPAN&gt; &lt;/SPAN&gt;&lt;SPAN&gt;Stream Deck config - this is work in progress&lt;/SPAN&gt;&lt;SPAN&gt; &lt;/SPAN&gt;&lt;BR /&gt;&lt;SPAN&gt;(not sure if this is also published - PM if not)&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;/UL&gt;&lt;P&gt;&lt;SPAN&gt;Update &lt;/SPAN&gt;&lt;SPAN&gt;9&lt;/SPAN&gt;&lt;SPAN&gt;.&lt;/SPAN&gt;&lt;SPAN&gt;5&lt;/SPAN&gt;&lt;SPAN&gt;.&lt;/SPAN&gt;&lt;SPAN&gt;2021&lt;/SPAN&gt;&lt;SPAN&gt;:&lt;/SPAN&gt;&lt;/P&gt;&lt;UL&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;Changed battery event name - FBW team changed the LVAR&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;Added Stream Deck config - this is work in progress&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;/UL&gt;&lt;P&gt;&lt;SPAN STYLE="font-weight:bold;"&gt;Switch Panel&lt;/SPAN&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN&gt;Working / Extra:&lt;/SPAN&gt;&lt;/P&gt;&lt;UL&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;MASTER BAT: &lt;/SPAN&gt;&lt;SPAN&gt;turns on BAT 1 + 2&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;MAGNETO SWITCH&lt;/SPAN&gt;&lt;SPAN&gt;:&lt;/SPAN&gt;&lt;SPAN&gt;R &lt;/SPAN&gt;&lt;SPAN&gt;=&lt;/SPAN&gt;&lt;SPAN&gt;EXT PWR ON&lt;/SPAN&gt;&lt;SPAN&gt;, OFF = EXT PWR OFF&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;MASTER ALT: turns on both engine generators&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;AVIONICS: turns on avionics (necessary for Multipanel) and also switches on all 3 ADIRS &lt;/SPAN&gt;&lt;BR /&gt;&lt;SPAN&gt;(ADIRS are not switched off again - this is intentional)&lt;/SPAN&gt;&lt;BR /&gt;&lt;SPAN&gt;turns on CREW OXYGEN&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;FUEL PUMP: switches all 6 pumps&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;DE-ICE: swtiches WING and ENG 1+2 ANTI_ICE&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;PITOT HEAT: switches PROBE/WINDOW HEAT manually ON (not necessary as A320n does this automatically)&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;COWL SWITCHs: dome light ON/OFF&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;PANEL: turns on/off OVHD panel inegrated lights (need to turn to full in plane first)&lt;/SPAN&gt;&lt;SPAN&gt;and increases and decreases DIM of all displays and flood lights&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;NAV: Nav lights&lt;/SPAN&gt;&lt;SPAN&gt;, Logo Lights, Wing Lights&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;STROBE: Strobe lights&lt;/SPAN&gt;&lt;SPAN&gt;(Auto)&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;TAXI: switches RWY TURN OFF and NOSE to TAXI&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;LANDING: switches both LAND ON and also NODE to TO - somewhat interacting with TAXI lights&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;GEAR: works fine&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;/UL&gt;&lt;P&gt;&lt;SPAN STYLE="font-weight:bold;"&gt;Multipanel&lt;/SPAN&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN&gt;Working / Extra:&lt;/SPAN&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN&gt;Display&lt;/SPAN&gt;&lt;SPAN&gt;and knob&lt;/SPAN&gt;&lt;SPAN&gt;:&lt;/SPAN&gt;&lt;/P&gt;&lt;UL&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;ALT: works (steps of 100ft)&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;VS: displays and changes actual VS, changes FMA announiator &lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;IAS: displays and changes speed bug and actual speed&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;HDG: displays and changes hdg bug and actual hdg&lt;/SPAN&gt;&lt;BR /&gt;&lt;SPAN&gt;(when in SELECTED HDG shows actual hdg)&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;CRS: displays and changes crs1 (ND VOR mode) and actual crs1, &lt;/SPAN&gt;&lt;SPAN STYLE="font-weight:bold;"&gt;does NOT change FMGC RADNAV page &lt;/SPAN&gt;&lt;SPAN STYLE="font-weight:bold;"&gt;CRS&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;/UL&gt;&lt;P&gt;&lt;SPAN&gt;AP Buttons:&lt;/SPAN&gt;&lt;/P&gt;&lt;UL&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;AP&lt;/SPAN&gt;&lt;SPAN&gt;-&lt;/SPAN&gt;&lt;SPAN&gt;Light&lt;/SPAN&gt;&lt;SPAN&gt;: ON when AP1&lt;/SPAN&gt;&lt;SPAN /&gt;&lt;SPAN&gt;or AP2&lt;/SPAN&gt;&lt;SPAN /&gt;&lt;SPAN&gt;ON, OFF otherwise&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;AP&lt;/SPAN&gt;&lt;SPAN&gt;-&lt;/SPAN&gt;&lt;SPAN&gt;Button: &lt;/SPAN&gt;&lt;SPAN&gt;AP1 ON/OFF&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;HDG&lt;/SPAN&gt;&lt;SPAN&gt;-&lt;/SPAN&gt;&lt;SPAN&gt;Lights&lt;/SPAN&gt;&lt;SPAN&gt;: &lt;/SPAN&gt;&lt;SPAN&gt;ON when &lt;/SPAN&gt;&lt;SPAN&gt;A32NX_FMA_LATERAL_MODE=(10 or 11)&lt;/SPAN&gt;&lt;SPAN&gt;, OFF otherwise&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;HDG&lt;/SPAN&gt;&lt;SPAN&gt;-&lt;/SPAN&gt;&lt;SPAN&gt;Button: &lt;/SPAN&gt;&lt;SPAN&gt;Selected Heading (&lt;/SPAN&gt;&lt;SPAN&gt;A32NX.FCU_HDG_PULL&lt;/SPAN&gt;&lt;SPAN&gt;)&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;NAV:&lt;/SPAN&gt;&lt;SPAN&gt;-Light: ON when &lt;/SPAN&gt;&lt;SPAN&gt;A32NX_FMA_LATERAL_MODE=20&lt;/SPAN&gt;&lt;SPAN&gt;, OFF otherwise&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;NAV&lt;/SPAN&gt;&lt;SPAN&gt;-&lt;/SPAN&gt;&lt;SPAN&gt;Button: &lt;/SPAN&gt;&lt;SPAN&gt;Managed Heading (A32NX.FCU_HDG_PUSH)&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;IAS:&lt;/SPAN&gt;&lt;SPAN&gt;-Light:&lt;/SPAN&gt;&lt;SPAN /&gt;&lt;SPAN&gt;ON when in &lt;/SPAN&gt;&lt;SPAN&gt;SELECTED &lt;/SPAN&gt;&lt;SPAN&gt;SPEED&lt;/SPAN&gt;&lt;SPAN&gt;MODE&lt;/SPAN&gt;&lt;SPAN&gt;, OFF when in managed SPEED &lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;IA&lt;/SPAN&gt;&lt;SPAN&gt;S-&lt;/SPAN&gt;&lt;SPAN&gt;Button: &lt;/SPAN&gt;&lt;SPAN&gt;SHORT: S&lt;/SPAN&gt;&lt;SPAN&gt;elected Speed (A32NX.FCU_SPD_PULL)&lt;/SPAN&gt;&lt;SPAN&gt;LONG: Managed Speed (&lt;/SPAN&gt;&lt;SPAN&gt;A32NX.FCU_SPD_PUSH&lt;/SPAN&gt;&lt;SPAN&gt;)&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;ALT&lt;/SPAN&gt;&lt;SPAN&gt;-&lt;/SPAN&gt;&lt;SPAN&gt;Light&lt;/SPAN&gt;&lt;SPAN&gt;: ON when A32NX_FMA_VERTICAL_MODE&lt;/SPAN&gt;&lt;SPAN&gt;=10&lt;/SPAN&gt;&lt;SPAN&gt;, OFF otherwise&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;ALT&lt;/SPAN&gt;&lt;SPAN&gt;-&lt;/SPAN&gt;&lt;SPAN&gt;Button&lt;/SPAN&gt;&lt;SPAN&gt;: &lt;/SPAN&gt;&lt;SPAN&gt;SHORT: &lt;/SPAN&gt;&lt;SPAN&gt;Selected ALT (A32NX.FCU_ALT_PULL)&lt;/SPAN&gt;&lt;SPAN&gt;LONG: Managed&lt;/SPAN&gt;&lt;SPAN&gt;ALT (A32NX.FCU_ALT_PU&lt;/SPAN&gt;&lt;SPAN&gt;SH&lt;/SPAN&gt;&lt;SPAN&gt;)&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;VS&lt;/SPAN&gt;&lt;SPAN&gt;-&lt;/SPAN&gt;&lt;SPAN&gt;Light&lt;/SPAN&gt;&lt;SPAN&gt;: ON when A32NX_FMA_VERTICAL_MODE&lt;/SPAN&gt;&lt;SPAN&gt;=(14 or 15)&lt;/SPAN&gt;&lt;SPAN&gt;, OFF otherwise&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;VS&lt;/SPAN&gt;&lt;SPAN&gt;-&lt;/SPAN&gt;&lt;SPAN&gt;Button:&lt;/SPAN&gt;&lt;SPAN&gt;SHORT: &lt;/SPAN&gt;&lt;SPAN&gt;Selected VS (A32NX.FCU_VS_PULL)&lt;/SPAN&gt;&lt;SPAN&gt;LONG: Level Off / 0 &lt;/SPAN&gt;&lt;SPAN&gt;VS (A32NX.FCU_VS_PU&lt;/SPAN&gt;&lt;SPAN&gt;SH&lt;/SPAN&gt;&lt;SPAN&gt;)&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;APR&lt;/SPAN&gt;&lt;SPAN&gt;-&lt;/SPAN&gt;&lt;SPAN&gt;Light&lt;/SPAN&gt;&lt;SPAN&gt;:&lt;/SPAN&gt;&lt;SPAN /&gt;&lt;SPAN&gt;ON when APPR &lt;/SPAN&gt;&lt;SPAN&gt;m&lt;/SPAN&gt;&lt;SPAN&gt;ode is ON, OFF otherwise&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;APR&lt;/SPAN&gt;&lt;SPAN&gt;-&lt;/SPAN&gt;&lt;SPAN&gt;Button: &lt;/SPAN&gt;&lt;SPAN&gt;APPR ON/(OFF&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;REV&lt;/SPAN&gt;&lt;SPAN&gt;-&lt;/SPAN&gt;&lt;SPAN&gt;Light: &lt;/SPAN&gt;&lt;SPAN&gt;ON when LOC mode is ON, OFF otherwise&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;REV&lt;/SPAN&gt;&lt;SPAN&gt;-&lt;/SPAN&gt;&lt;SPAN&gt;Button&lt;/SPAN&gt;&lt;SPAN&gt;: LOC ON/OFF&lt;/SPAN&gt;&lt;SPAN /&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN /&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;A&lt;/SPAN&gt;&lt;SPAN&gt;UTO THOTTLE&lt;/SPAN&gt;&lt;SPAN /&gt;&lt;SPAN&gt;Switch&lt;/SPAN&gt;&lt;SPAN&gt;: &lt;/SPAN&gt;&lt;SPAN&gt;Seat Belts ON/OFF, NO SMOKING ON (not OFF), EMERGENCY LT ON (not OFF)&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;FLAPS: works as expected&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;PITCH TRIM: works but useless in A320 as it autotrims&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;/UL&gt;&lt;P&gt;&lt;SPAN&gt;TCA Throttle&lt;/SPAN&gt;&lt;SPAN&gt;(remove all mappings in MSFS)&lt;/SPAN&gt;&lt;SPAN&gt;:&lt;/SPAN&gt;&lt;/P&gt;&lt;UL&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;Throttle as Custom Axis (need calibration in A32NX FlyPad) incl. Reverser&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;Throttle Buttons: A/THR disconnect&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;Left Button: Parking Break&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;Right Button: Autopilot&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;Mode switch: as default - IGN for starting engines&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;Eng 1 +2: as default&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;/UL&gt;&lt;P&gt;&lt;SPAN&gt;Strem Deck config (work in progress)&lt;/SPAN&gt;&lt;/P&gt;&lt;UL&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;5 Pages:&lt;/SPAN&gt;&lt;/P&gt;&lt;UL&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;Main &lt;/SPAN&gt;&lt;BR /&gt;&lt;SPAN&gt;(views might need custom views to be configured)&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;OVHD&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;FCU&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;PED (pedestal)&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;LI&gt;&lt;P&gt;&lt;SPAN&gt;Test Page&lt;/SPAN&gt;&lt;/P&gt;&lt;/LI&gt;&lt;/UL&gt;&lt;/LI&gt;&lt;/UL&gt;&lt;P&gt;&lt;SPAN /&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN /&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/BODY&gt;&lt;/HTML&gt;</Description>
+    <LastChanged>2023-03-12T20:34:51.7112652+00:00</LastChanged>
+  </ProfileInformation>
+</Profile>

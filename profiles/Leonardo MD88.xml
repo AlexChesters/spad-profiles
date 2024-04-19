@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Profile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="2" xmlns="http://www.fsgs.com/SPAD">
   <Devices>
-    <Device VendorID="0x044F" ProductID="0x0405" DevicePath="\\?\hid#vid_044f&amp;pid_0405#9&amp;e7c901f&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
+    <Device VendorID="0x044F" ProductID="0x0405" DevicePath="\\?\hid#vid_044f&amp;pid_0405#8&amp;e7c901f&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
       <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
         <Events>
           <Event BoundTo="BUTTON_4">
             <EventDefinitions>
               <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_MASTER" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_MASTER" Value="0" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -17,7 +17,7 @@
             <EventDefinitions>
               <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_ALT_HOLD" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AUTO_THROTTLE_ARM" Value="0" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -31,42 +31,16 @@
     <Device VendorID="0x294B" ProductID="0x1901" DevicePath="\\?\hid#vid_294b&amp;pid_1901#b&amp;87306dd&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
       <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
         <Events>
-          <Event BoundTo="Y_AXIS">
+          <Event BoundTo="BUTTON_31">
             <EventDefinitions>
-              <EventDefinition Trigger="VALUE">
+              <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionCustomAxis TargetDataDefinition="SIMCONNECT:AXIS_THROTTLE1_SET" Value="0">
-                    <Options>
-                      <Option Key="USEMAPPING" Value="True" />
-                      <Option Key="USETRIGGERVALUE" Value="True" />
-                      <Option Key="MAPFROM" Value="-16383" />
-                      <Option Key="MAPTO" Value="16383" />
-                      <Option Key="ALWAYSACTIVE" Value="False" />
-                      <Option Key="USERAWVALUE" Value="True" />
-                      <Option Key="RANGEFROM" Value="0" />
-                      <Option Key="RANGETO" Value="1023" />
-                    </Options>
-                  </EventActionCustomAxis>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_UP" />
                 </EventActions>
               </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="X_AXIS">
-            <EventDefinitions>
-              <EventDefinition Trigger="VALUE">
+              <EventDefinition Trigger="RELEASE">
                 <EventActions>
-                  <EventActionCustomAxis TargetDataDefinition="SIMCONNECT:AXIS_THROTTLE2_SET" Value="0">
-                    <Options>
-                      <Option Key="USEMAPPING" Value="True" />
-                      <Option Key="USETRIGGERVALUE" Value="True" />
-                      <Option Key="MAPFROM" Value="-16383" />
-                      <Option Key="MAPTO" Value="16383" />
-                      <Option Key="ALWAYSACTIVE" Value="False" />
-                      <Option Key="USERAWVALUE" Value="True" />
-                      <Option Key="RANGEFROM" Value="0" />
-                      <Option Key="RANGETO" Value="1023" />
-                    </Options>
-                  </EventActionCustomAxis>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_DOWN" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -75,13 +49,12 @@
             <EventDefinitions>
               <EventDefinition Trigger="VALUE">
                 <EventActions>
-                  <EventActionRangedAxis ConfigID="LEVER_PROPPITCH">
+                  <EventActionRangedAxis ConfigID="LEVER_NOREVERSE_THROTTLE">
                     <Options>
                       <Option Key="USERAWVALUE" Value="True" />
                       <Option Key="OPTION1" Value="True" />
-                      <Option Key="MAX" Value="0" />
-                      <Option Key="MIN" Value="1023" />
-                      <Option Key="INVERTAXIS" Value="True" />
+                      <Option Key="IDLE" Value="0" />
+                      <Option Key="MAX" Value="1023" />
                     </Options>
                   </EventActionRangedAxis>
                 </EventActions>
@@ -92,47 +65,11 @@
             <EventDefinitions>
               <EventDefinition Trigger="VALUE">
                 <EventActions>
-                  <EventActionRangedAxis ConfigID="LEVER_PROPPITCH">
+                  <EventActionRangedAxis ConfigID="LEVER_NOREVERSE_THROTTLE">
                     <Options>
                       <Option Key="USERAWVALUE" Value="True" />
                       <Option Key="OPTION1" Value="False" />
-                      <Option Key="MAX" Value="0" />
-                      <Option Key="MIN" Value="1023" />
-                      <Option Key="INVERTAXIS" Value="True" />
-                      <Option Key="OPTION2" Value="True" />
-                    </Options>
-                  </EventActionRangedAxis>
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="RX_AXIS">
-            <EventDefinitions>
-              <EventDefinition Trigger="VALUE">
-                <EventActions>
-                  <EventActionRangedAxis ConfigID="LEVER_MIXTURE">
-                    <Options>
-                      <Option Key="USERAWVALUE" Value="True" />
-                      <Option Key="OPTION1" Value="True" />
-                      <Option Key="INVERTAXIS" Value="False" />
-                      <Option Key="MIN" Value="0" />
-                      <Option Key="MAX" Value="1023" />
-                    </Options>
-                  </EventActionRangedAxis>
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="Z_AXIS">
-            <EventDefinitions>
-              <EventDefinition Trigger="VALUE">
-                <EventActions>
-                  <EventActionRangedAxis ConfigID="LEVER_MIXTURE">
-                    <Options>
-                      <Option Key="USERAWVALUE" Value="True" />
-                      <Option Key="OPTION1" Value="False" />
-                      <Option Key="INVERTAXIS" Value="False" />
-                      <Option Key="MIN" Value="0" />
+                      <Option Key="IDLE" Value="0" />
                       <Option Key="MAX" Value="1023" />
                       <Option Key="OPTION2" Value="True" />
                     </Options>
@@ -143,7 +80,7 @@
           </Event>
           <Event BoundTo="BUTTON_15">
             <EventDefinitions>
-              <EventDefinition Trigger="PRESSSHORT">
+              <EventDefinition Trigger="PRESS">
                 <EventActions>
                   <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_INCR" />
                 </EventActions>
@@ -152,35 +89,55 @@
           </Event>
           <Event BoundTo="BUTTON_16">
             <EventDefinitions>
-              <EventDefinition Trigger="PRESSSHORT">
+              <EventDefinition Trigger="PRESS">
                 <EventActions>
                   <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_DECR" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
           </Event>
-          <Event BoundTo="BUTTON_31">
+          <Event BoundTo="BUTTON_46">
             <EventDefinitions>
               <EventDefinition Trigger="RELEASE">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_DOWN" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:PARKING_BRAKES" />
                 </EventActions>
               </EventDefinition>
               <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_UP" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:PARKING_BRAKES" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
           </Event>
-          <Event BoundTo="BUTTON_22">
+          <Event BoundTo="BUTTON_8">
             <EventDefinitions>
               <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_DN" />
-                  <EventActionPlaySound SoundName="D:\spad.NEXT sounds\click.mp3">
-                    <Volume>50</Volume>
-                  </EventActionPlaySound>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_MASTER" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_30">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AUTO_THROTTLE_TO_GA" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_26">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="MSFS:THROTTLE_REVERSE_THRUST_TOGGLE" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="MSFS:THROTTLE_REVERSE_THRUST_TOGGLE" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -197,25 +154,14 @@
               </EventDefinition>
             </EventDefinitions>
           </Event>
-          <Event BoundTo="BUTTON_29">
+          <Event BoundTo="BUTTON_22">
             <EventDefinitions>
-              <EventDefinition Trigger="PRESSSHORT">
+              <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_ALT_HOLD" />
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="E_AP_ENCODER">
-            <EventDefinitions>
-              <EventDefinition Trigger="TUNER_CLOCKWISE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:HEADING_BUG_INC" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:HEADING_BUG_DEC" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_DN" />
+                  <EventActionPlaySound SoundName="D:\spad.NEXT sounds\click.mp3">
+                    <Volume>50</Volume>
+                  </EventActionPlaySound>
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -348,10 +294,49 @@
       </Events>
       <Extensions />
     </Device>
+    <Device VendorID="0x294B" ProductID="0x1900" DevicePath="\\?\hid#vid_294b&amp;pid_1900#c&amp;5e76d85&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
+      <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
+        <Events>
+          <Event BoundTo="BUTTON_6">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_DN" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="HELD">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_DN" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_5">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_UP" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="HELD">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_UP" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+        </Events>
+        <Extensions />
+      </DevicePage>
+      <Events />
+      <Extensions />
+    </Device>
   </Devices>
   <Options>
     <Option Key="Elgato.Streamdeck.Brightness" Value="100" />
     <Option Key="Elgato.Streamdeck.DarkenDevice" Value="True" />
+    <Option Key="Elgato.Streamdeck.HeldThreshold" Value="500" />
+    <Option Key="Elgato.Streamdeck.HeldFrequency" Value="1" />
     <Option Key="Saitek.BIP.EnableVirtualPower" Value="True" />
     <Option Key="Saitek.BIP.Brightness" Value="50" />
     <Option Key="Saitek.BIP.Priority.VALUEOFF" Value="0" />
@@ -371,12 +356,10 @@
     <Option Key="Ultimarc.PacDrive.EnableVirtualPower" Value="True" />
     <Option Key="Ultimarc.PacLed64.EnableVirtualPower" Value="True" />
     <Option Key="Ultimarc.PacLed64.Brightness" Value="128" />
-    <Option Key="Elgato.Streamdeck.HeldThreshold" Value="500" />
-    <Option Key="Elgato.Streamdeck.HeldFrequency" Value="1" />
   </Options>
-  <ProfileInformation ProfileID="1f87c9df-5111-4d2a-9ba9-0cd045d0c8de" Version="0.8">
+  <ProfileInformation ProfileID="11815599-e606-4f61-b004-11af7e8b4389" Version="0.16">
     <Author>ShermheadRyder</Author>
     <Description />
-    <LastChanged>2023-06-04T19:10:11.9877387+01:00</LastChanged>
+    <LastChanged>2023-07-16T09:58:39.9503561+01:00</LastChanged>
   </ProfileInformation>
 </Profile>

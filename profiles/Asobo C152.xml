@@ -155,6 +155,22 @@
               </EventDefinition>
             </EventDefinitions>
           </Event>
+          <Event BoundTo="RX_AXIS">
+            <EventDefinitions>
+              <EventDefinition Trigger="VALUE">
+                <EventActions>
+                  <EventActionRangedAxis ConfigID="LEVER_MIXTURE">
+                    <Options>
+                      <Option Key="USERAWVALUE" Value="True" />
+                      <Option Key="OPTION1" Value="True" />
+                      <Option Key="MIN" Value="0" />
+                      <Option Key="MAX" Value="1023" />
+                    </Options>
+                  </EventActionRangedAxis>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
           <Event BoundTo="BUTTON_21">
             <EventDefinitions>
               <EventDefinition Trigger="PRESS">
@@ -277,7 +293,14 @@
                   <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LOCAL:ALEX_AP_MODE" />
                 </EventConditions>
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="MSFS:AP_ALT_VAR_INC100" />
+                  <EventActionControl TargetDataDefinition="MSFS:KAP140_Knob_Inner_INC" />
+                  <EventActionChangeValue TargetDataDefinition="LVAR:KAP140_INNER_KNOB" Value="10" ValueOperation="Increment">
+                    <Options>
+                      <Option Key="HASMINMAX" Value="True" />
+                      <Option Key="ROLLOVER" Value="True" />
+                      <Option Key="VALUEMAX" Value="350" />
+                    </Options>
+                  </EventActionChangeValue>
                 </EventActions>
               </EventDefinition>
               <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE">
@@ -285,25 +308,14 @@
                   <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LOCAL:ALEX_AP_MODE" />
                 </EventConditions>
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="MSFS:AP_ALT_VAR_DEC100" />
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="RY_AXIS">
-            <EventDefinitions>
-              <EventDefinition Trigger="VALUE">
-                <EventActions>
-                  <EventActionRangedAxis ConfigID="LEVER_PROPPITCH">
+                  <EventActionControl TargetDataDefinition="MSFS:KAP140_Knob_Inner_DEC" />
+                  <EventActionChangeValue TargetDataDefinition="LVAR:KAP140_INNER_KNOB" Value="10" ValueOperation="Decrement">
                     <Options>
-                      <Option Key="USERAWVALUE" Value="True" />
-                      <Option Key="OPTION1" Value="True" />
-                      <Option Key="INVERTAXIS" Value="False" />
-                      <Option Key="MIN" Value="0" />
-                      <Option Key="MAX" Value="1023" />
-                      <Option Key="MINTO" Value="0" />
+                      <Option Key="HASMINMAX" Value="True" />
+                      <Option Key="ROLLOVER" Value="True" />
+                      <Option Key="VALUEMAX" Value="350" />
                     </Options>
-                  </EventActionRangedAxis>
+                  </EventActionChangeValue>
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -321,7 +333,7 @@
             <EventDefinitions>
               <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_MASTER" />
+                  <EventActionControl TargetDataDefinition="MSFS:KAP140_Push_AP" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -330,6 +342,10 @@
         <Extensions />
       </DevicePage>
       <Events />
+      <Options>
+        <Option Key="BUTTON_4.InputModifier" Value="Repeat" />
+        <Option Key="BUTTON_3.InputModifier" Value="Repeat" />
+      </Options>
       <Extensions />
     </Device>
     <Device VendorID="0x06A3" ProductID="0x0D05" DevicePath="\\?\hid#vid_06a3&amp;pid_0d05#c&amp;2824b2c3&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
@@ -641,6 +657,51 @@
               </EventDefinition>
             </EventDefinitions>
           </Event>
+          <Event BoundTo="BUTTON_31">
+            <EventDefinitions>
+              <EventDefinition Trigger="HELD">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:MAGNETO_OFF" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_32">
+            <EventDefinitions>
+              <EventDefinition Trigger="HELD">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:MAGNETO_RIGHT" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_33">
+            <EventDefinitions>
+              <EventDefinition Trigger="HELD">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:MAGNETO_LEFT" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_34">
+            <EventDefinitions>
+              <EventDefinition Trigger="HELD">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:MAGNETO_BOTH" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_35">
+            <EventDefinitions>
+              <EventDefinition Trigger="HELD">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:MAGNETO_START" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
         </Events>
         <Extensions />
       </DevicePage>
@@ -673,9 +734,9 @@
     <Option Key="Elgato.Streamdeck.HeldThreshold" Value="500" />
     <Option Key="Elgato.Streamdeck.HeldFrequency" Value="1" />
   </Options>
-  <ProfileInformation ProfileID="76b15312-ef8d-408c-a370-3a341b234bbd" Version="0.16">
+  <ProfileInformation ProfileID="b370baec-6467-4571-91ba-2cf79f504a23" Version="0.20">
     <Author>ShermheadRyder</Author>
     <Description />
-    <LastChanged>2023-06-13T18:44:19.1524384+01:00</LastChanged>
+    <LastChanged>2023-06-13T12:57:17.8689676+01:00</LastChanged>
   </ProfileInformation>
 </Profile>

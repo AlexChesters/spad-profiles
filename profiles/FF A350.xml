@@ -1196,39 +1196,6 @@
     <Device VendorID="0x294B" ProductID="0x1901" DevicePath="\\?\hid#vid_294b&amp;pid_1901#b&amp;87306dd&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
       <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
         <Events>
-          <Event BoundTo="RZ_AXIS">
-            <EventDefinitions>
-              <EventDefinition Trigger="VALUE">
-                <EventActions>
-                  <EventActionRangedAxis ConfigID="LEVER_NOREVERSE_THROTTLE">
-                    <Options>
-                      <Option Key="USERAWVALUE" Value="True" />
-                      <Option Key="OPTION1" Value="True" />
-                      <Option Key="IDLE" Value="0" />
-                      <Option Key="MAX" Value="1023" />
-                    </Options>
-                  </EventActionRangedAxis>
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="RY_AXIS">
-            <EventDefinitions>
-              <EventDefinition Trigger="VALUE">
-                <EventActions>
-                  <EventActionRangedAxis ConfigID="LEVER_NOREVERSE_THROTTLE">
-                    <Options>
-                      <Option Key="USERAWVALUE" Value="True" />
-                      <Option Key="OPTION1" Value="False" />
-                      <Option Key="IDLE" Value="0" />
-                      <Option Key="MAX" Value="1023" />
-                      <Option Key="OPTION2" Value="True" />
-                    </Options>
-                  </EventActionRangedAxis>
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
           <Event BoundTo="BUTTON_15">
             <EventDefinitions>
               <EventDefinition Trigger="PRESS">
@@ -1302,9 +1269,9 @@
     <Option Key="Elgato.Streamdeck.HeldThreshold" Value="500" />
     <Option Key="Elgato.Streamdeck.HeldFrequency" Value="1" />
   </Options>
-  <ProfileInformation ProfileID="ccfb1331-3bc3-41c8-b6be-7e4cfab1721e" Version="0.7">
+  <ProfileInformation ProfileID="430059c8-1224-4454-84df-0d23b2c0e510" Version="0.5">
     <Author>ShermheadRyder</Author>
     <Description />
-    <LastChanged>2023-01-21T19:25:20.0050497+00:00</LastChanged>
+    <LastChanged>2023-01-23T15:04:31.1030429+00:00</LastChanged>
   </ProfileInformation>
 </Profile>

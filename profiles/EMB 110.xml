@@ -1,23 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Profile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="2" xmlns="http://www.fsgs.com/SPAD">
   <Devices>
-    <Device VendorID="0x044F" ProductID="0x0405" DevicePath="\\?\hid#vid_044f&amp;pid_0405#8&amp;e7c901f&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="2">
+    <Device VendorID="0x044F" ProductID="0x0405" DevicePath="\\?\hid#vid_044f&amp;pid_0405#8&amp;e7c901f&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
       <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
         <Events>
           <Event BoundTo="BUTTON_4">
             <EventDefinitions>
               <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_MASTER" Value="0" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_MASTER" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_11">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESSSHORT">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_SPD_VAR_INC" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_16">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESSSHORT">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_SPD_VAR_DEC" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_12">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESSSHORT">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_VS_VAR_DEC" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_15">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESSSHORT">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_VS_VAR_INC" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
           </Event>
         </Events>
+        <Extensions />
       </DevicePage>
       <Events />
+      <Extensions />
     </Device>
-    <Device VendorID="0x294B" ProductID="0x1901" DevicePath="\\?\hid#vid_294b&amp;pid_1901#7&amp;87306dd&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="2">
+    <Device VendorID="0x294B" ProductID="0x1901" DevicePath="\\?\hid#vid_294b&amp;pid_1901#7&amp;87306dd&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
       <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
         <Events>
           <Event BoundTo="Y_AXIS">
@@ -132,18 +170,18 @@
           </Event>
           <Event BoundTo="BUTTON_15">
             <EventDefinitions>
-              <EventDefinition Trigger="PRESSIMM">
+              <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_INCR" Value="0" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_INCR" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
           </Event>
           <Event BoundTo="BUTTON_16">
             <EventDefinitions>
-              <EventDefinition Trigger="PRESSIMM">
+              <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_DECR" Value="0" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:FLAPS_DECR" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -152,30 +190,12 @@
             <EventDefinitions>
               <EventDefinition Trigger="RELEASE">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_DOWN" Value="0" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_DOWN" />
                 </EventActions>
               </EventDefinition>
               <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_UP" Value="0" />
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="BUTTON_22">
-            <EventDefinitions>
-              <EventDefinition Trigger="PRESS">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_DN" Value="0" />
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="BUTTON_23">
-            <EventDefinitions>
-              <EventDefinition Trigger="PRESS">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_UP" Value="0" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_UP" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -184,25 +204,118 @@
             <EventDefinitions>
               <EventDefinition Trigger="TUNER_CLOCKWISE">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:RUDDER_TRIM_LEFT" Value="0" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:RUDDER_TRIM_LEFT" />
                 </EventActions>
               </EventDefinition>
               <EventDefinition Trigger="TUNER_COUNTERCLOCKWISE">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:RUDDER_TRIM_RIGHT" Value="0" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:RUDDER_TRIM_RIGHT" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_1">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_HDG_HOLD" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_2">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_NAV1_HOLD" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_8">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_MASTER" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_46">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:PARKING_BRAKES" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:PARKING_BRAKES" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_7">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_AIRSPEED_HOLD" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_6">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_VS_HOLD" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_3">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_APR_HOLD" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_22">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_DN" />
+                  <EventActionPlaySound SoundName="D:\spad.NEXT sounds\click.mp3">
+                    <Volume>50</Volume>
+                  </EventActionPlaySound>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_23">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_UP" />
+                  <EventActionPlaySound SoundName="D:\spad.NEXT sounds\click.mp3">
+                    <Volume>50</Volume>
+                  </EventActionPlaySound>
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
           </Event>
         </Events>
+        <Extensions />
       </DevicePage>
       <Events />
+      <Extensions />
     </Device>
   </Devices>
   <Options>
     <Option Key="Elgato.Streamdeck.Brightness" Value="100" />
     <Option Key="Elgato.Streamdeck.DarkenDevice" Value="True" />
-    <Option Key="Elgato.Streamdeck.FlashBackgroundOnly" Value="True" />
     <Option Key="Saitek.BIP.EnableVirtualPower" Value="True" />
     <Option Key="Saitek.BIP.Brightness" Value="50" />
     <Option Key="Saitek.BIP.Priority.VALUEOFF" Value="0" />
@@ -222,10 +335,12 @@
     <Option Key="Ultimarc.PacDrive.EnableVirtualPower" Value="True" />
     <Option Key="Ultimarc.PacLed64.EnableVirtualPower" Value="True" />
     <Option Key="Ultimarc.PacLed64.Brightness" Value="128" />
+    <Option Key="Elgato.Streamdeck.HeldThreshold" Value="500" />
+    <Option Key="Elgato.Streamdeck.HeldFrequency" Value="1" />
   </Options>
-  <ProfileInformation ProfileID="16182681-5e97-4eea-a202-ee4f763be390" Version="0.8">
+  <ProfileInformation ProfileID="16182681-5e97-4eea-a202-ee4f763be390" Version="0.18">
     <Author>ShermheadRyder</Author>
     <Description />
-    <LastChanged>2022-06-23T19:09:29.4493697+01:00</LastChanged>
+    <LastChanged>2023-01-05T20:30:09.8895082+00:00</LastChanged>
   </ProfileInformation>
 </Profile>
