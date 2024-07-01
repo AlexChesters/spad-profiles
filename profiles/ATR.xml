@@ -1,4 +1,3 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Profile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="2" xmlns="http://www.fsgs.com/SPAD">
   <Devices>
     <Device VendorID="0x294B" ProductID="0x1901" DevicePath="\\?\hid#vid_294b&amp;pid_1901#b&amp;87306dd&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
@@ -203,7 +202,7 @@
             <EventDefinitions>
               <EventDefinition Trigger="PRESS" IsFinal="true">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LOCAL:CHESTERS_CAMERA_CONDITION" />
+                  <EventCondition ConditionTargetValue="1" ConditionValueSource="LOCAL:CHESTERS_CAMERA_CONDITION" />
                 </EventConditions>
                 <EventActions>
                   <EventActionVirtualJoyStick Value="0" JoystickAction="VJOY_BUTTON" JoystickNumber="1" JoystickTarget="1" JoystickMode="PRESSANDRELEASE" />
@@ -212,7 +211,7 @@
               </EventDefinition>
               <EventDefinition Trigger="PRESS" IsFinal="true">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LOCAL:CHESTERS_CAMERA_CONDITION" />
+                  <EventCondition ConditionTargetValue="0" ConditionValueSource="LOCAL:CHESTERS_CAMERA_CONDITION" />
                 </EventConditions>
                 <EventActions>
                   <EventActionVirtualJoyStick Value="0" JoystickAction="VJOY_BUTTON" JoystickNumber="1" JoystickTarget="8" JoystickMode="PRESSANDRELEASE" />
@@ -460,11 +459,35 @@
               </EventDefinition>
             </EventDefinitions>
           </Event>
+          <Event BoundTo="HATSWITCH_0">
+            <EventDefinitions>
+              <EventDefinition Trigger="POV_SOUTH_PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_UP" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="POV_SOUTH_HELD">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_UP" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="POV_NORTH_PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_DN" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="POV_NORTH_HELD">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_DN" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
           <Event BoundTo="BUTTON_3">
             <EventDefinitions>
               <EventDefinition Trigger="PRESSSHORT">
                 <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:AUTO_THROTTLE_ARM" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:AUTO_THROTTLE_TO_GA" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -475,7 +498,7 @@
       <Events />
       <Extensions />
     </Device>
-    <Device VendorID="0x06A3" ProductID="0x0D05" DevicePath="\\?\hid#vid_06a3&amp;pid_0d05#d&amp;2dac8538&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
+    <Device VendorID="0x06A3" ProductID="0x0D05" DevicePath="\\?\hid#vid_06a3&amp;pid_0d05#d&amp;1bb4318b&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
       <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
         <Events>
           <Event BoundTo="RADIOPANEL_UPPER_SELECTOR_COM1">
@@ -578,18 +601,22 @@
           <EventDefinitions>
             <EventDefinition Trigger="VALUE">
               <EventConditions>
-                <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="SIMCONNECT:AVIONICS MASTER SWITCH" />
+                <EventCondition ConditionTargetValue="1" ConditionValueSource="SIMCONNECT:AVIONICS MASTER SWITCH" />
               </EventConditions>
               <EventActions>
-                <EventActionCommand CommandName="SPAD_neXt.Device_PowerON" />
+                <EventActionCommand>
+                  <Parameter Value="SPAD_neXt.Device_PowerON" />
+                </EventActionCommand>
               </EventActions>
             </EventDefinition>
             <EventDefinition Trigger="VALUE">
               <EventConditions>
-                <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="SIMCONNECT:AVIONICS MASTER SWITCH" />
+                <EventCondition ConditionTargetValue="0" ConditionValueSource="SIMCONNECT:AVIONICS MASTER SWITCH" />
               </EventConditions>
               <EventActions>
-                <EventActionCommand CommandName="SPAD_neXt.Device_PowerOFF" />
+                <EventActionCommand>
+                  <Parameter Value="SPAD_neXt.Device_PowerOFF" />
+                </EventActionCommand>
               </EventActions>
             </EventDefinition>
           </EventDefinitions>
@@ -805,7 +832,6 @@
   <Options>
     <Option Key="Saitek.BIP.EnableVirtualPower" Value="True" />
     <Option Key="Saitek.BIP.Brightness" Value="50" />
-    <Option Key="Saitek.FIP.BindLightToMode" Value="False" />
     <Option Key="Saitek.FIP.EnableVirtualPower" Value="True" />
     <Option Key="Saitek.FIP.DefaultPagingButtons" Value="True" />
     <Option Key="Saitek.FIP.PagingButtonsOn" Value="True" />
@@ -818,9 +844,9 @@
     <Option Key="Ultimarc.PacLed64.EnableVirtualPower" Value="True" />
     <Option Key="Ultimarc.PacLed64.Brightness" Value="128" />
   </Options>
-  <ProfileInformation ProfileID="ce83b033-cfd5-45e2-9345-806586ef2784" Version="0.48">
+  <ProfileInformation ProfileID="ce83b033-cfd5-45e2-9345-806586ef2784" Version="0.50">
     <Author>ShermheadRyder</Author>
     <Description />
-    <LastChanged>2023-10-22T10:53:51.3309187+01:00</LastChanged>
+    <LastChanged>2024-06-02T17:56:06.9524269+01:00</LastChanged>
   </ProfileInformation>
 </Profile>
