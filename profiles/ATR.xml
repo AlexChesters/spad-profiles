@@ -593,6 +593,20 @@
               <Option Key="TUNER_MULTIPLY_3" Value="3" />
             </Options>
           </Event>
+          <Event BoundTo="RADIOPANEL_LOWER_SELECTOR_XPDR">
+            <EventDefinitions>
+              <EventDefinition Trigger="LEFTDISPLAY">
+                <EventActions>
+                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:AIRSPEED INDICATED" DisplayFormat="000" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="RIGHTDISPLAY">
+                <EventActions>
+                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:INDICATED ALTITUDE" DisplayFormat="0000" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
         </Events>
         <Extensions />
       </DevicePage>
@@ -844,9 +858,9 @@
     <Option Key="Ultimarc.PacLed64.EnableVirtualPower" Value="True" />
     <Option Key="Ultimarc.PacLed64.Brightness" Value="128" />
   </Options>
-  <ProfileInformation ProfileID="ce83b033-cfd5-45e2-9345-806586ef2784" Version="0.50">
+  <ProfileInformation ProfileID="ce83b033-cfd5-45e2-9345-806586ef2784" Version="0.52">
     <Author>ShermheadRyder</Author>
     <Description />
-    <LastChanged>2024-06-02T17:56:06.9524269+01:00</LastChanged>
+    <LastChanged>2024-08-18T13:40:40.3953296+01:00</LastChanged>
   </ProfileInformation>
 </Profile>

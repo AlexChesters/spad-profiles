@@ -162,20 +162,6 @@
               </EventDefinition>
             </EventDefinitions>
           </Event>
-          <Event BoundTo="BUTTON_31">
-            <EventDefinitions>
-              <EventDefinition Trigger="RELEASE">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_DOWN" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="PRESS">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_UP" />
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
           <Event BoundTo="BUTTON_46">
             <EventDefinitions>
               <EventDefinition Trigger="RELEASE">
@@ -344,32 +330,42 @@
               </EventDefinition>
             </EventDefinitions>
           </Event>
-          <Event BoundTo="BUTTON_22">
+          <Event BoundTo="BUTTON_31">
             <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_DOWN" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_DOWN" />
+                </EventActions>
+              </EventDefinition>
               <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionChangeValue TargetDataDefinition="SIMCONNECT:ELEVATOR TRIM PCT" Value="1" ValueOperation="Decrement">
-                    <Options>
-                      <Option Key="HASMINMAX" Value="True" />
-                      <Option Key="VALUEMIN" Value="-100" />
-                      <Option Key="VALUEMAX" Value="100" />
-                    </Options>
-                  </EventActionChangeValue>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_UP" />
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:GEAR_UP" />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
           </Event>
           <Event BoundTo="BUTTON_23">
             <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionChangeValue TargetDataDefinition="SIMCONNECT:ELEVATOR TRIM PCT" Value="1" ValueOperation="Increment" />
+                  <EventActionPlaySound SoundName="C:\Users\alexc\Documents\SPAD.next sounds\click.mp3">
+                    <Volume>50</Volume>
+                  </EventActionPlaySound>
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_22">
+            <EventDefinitions>
               <EventDefinition Trigger="PRESS">
                 <EventActions>
-                  <EventActionChangeValue TargetDataDefinition="SIMCONNECT:ELEVATOR TRIM PCT" Value="1" ValueOperation="Increment">
-                    <Options>
-                      <Option Key="HASMINMAX" Value="True" />
-                      <Option Key="VALUEMIN" Value="-100" />
-                      <Option Key="VALUEMAX" Value="100" />
-                    </Options>
-                  </EventActionChangeValue>
+                  <EventActionChangeValue TargetDataDefinition="SIMCONNECT:ELEVATOR TRIM PCT" Value="1" ValueOperation="Decrement" />
+                  <EventActionPlaySound SoundName="C:\Users\alexc\Documents\SPAD.next sounds\click.mp3">
+                    <Volume>50</Volume>
+                  </EventActionPlaySound>
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -541,6 +537,30 @@
               <Option Key="TUNER_MULTIPLY_3" Value="3" />
             </Options>
           </Event>
+          <Event BoundTo="RADIOPANEL_LOWER_SELECTOR_XPDR">
+            <EventDefinitions>
+              <EventDefinition Trigger="RIGHTDISPLAY">
+                <EventActions>
+                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:KOHLSMAN SETTING MB" DisplayFormat="0000" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_OUTER_CLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:KOHLSMAN_INC" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_OUTER_COUNTERCLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:KOHLSMAN_DEC" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="LEFTDISPLAY">
+                <EventActions>
+                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:NAV DME:1" DisplayFormat="00.0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
         </Events>
         <Extensions />
       </DevicePage>
@@ -588,9 +608,9 @@
     <Option Key="Ultimarc.PacLed64.EnableVirtualPower" Value="True" />
     <Option Key="Ultimarc.PacLed64.Brightness" Value="128" />
   </Options>
-  <ProfileInformation ProfileID="023a452d-a697-4439-a557-a5f079d3dac5" Version="0.41">
-    <Author>ShermheadRyder</Author>
+  <ProfileInformation ProfileID="ae4176ca-7f02-4dba-a976-3ad4032d126c" Version="0.11">
+    <Author>shermheadryder</Author>
     <Description />
-    <LastChanged>2024-08-09T12:30:57.3773728+01:00</LastChanged>
+    <LastChanged>2024-09-16T18:16:56.4425932+01:00</LastChanged>
   </ProfileInformation>
 </Profile>
