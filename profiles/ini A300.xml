@@ -157,27 +157,6 @@
     <Device VendorID="0x06A3" ProductID="0x0D05" DevicePath="\\?\hid#vid_06a3&amp;pid_0d05#d&amp;1bb4318b&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
       <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
         <Events>
-          <Event BoundTo="RADIOPANEL_UPPER_SELECTOR_COM1">
-            <EventDefinitions>
-              <EventDefinition Trigger="LEFTDISPLAY">
-                <EventActions>
-                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:COM ACTIVE FREQUENCY:1" DisplayFormatting="1" />
-                </EventActions>
-              </EventDefinition>
-              <EventDefinition Trigger="RIGHTDISPLAY">
-                <EventActions>
-                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:COM STANDBY FREQUENCY:1" DisplayFormatting="1" />
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-            <Options>
-              <Option Key="TUNER_INNER_SENSITIVITY" Value="100" />
-              <Option Key="TUNER_OUTER_SENSITIVITY" Value="100" />
-              <Option Key="TUNER_MULTIPLY_1" Value="1" />
-              <Option Key="TUNER_MULTIPLY_2" Value="2" />
-              <Option Key="TUNER_MULTIPLY_3" Value="3" />
-            </Options>
-          </Event>
           <Event BoundTo="RADIOPANEL_UPPER_SELECTOR_COM2">
             <EventDefinitions>
               <EventDefinition Trigger="LEFTDISPLAY">
@@ -227,7 +206,32 @@
         </Events>
         <Extensions />
       </DevicePage>
-      <Events />
+      <Events>
+        <Event BoundTo="CONFIGURE_PANEL_STATUS">
+          <EventDefinitions>
+            <EventDefinition Trigger="VALUE">
+              <EventConditions>
+                <EventCondition ConditionTargetValue="1" ConditionValueSource="SIMCONNECT:AVIONICS MASTER SWITCH" />
+              </EventConditions>
+              <EventActions>
+                <EventActionCommand>
+                  <Parameter Value="SPAD_neXt.Device_PowerON" />
+                </EventActionCommand>
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="VALUE">
+              <EventConditions>
+                <EventCondition ConditionTargetValue="0" ConditionValueSource="SIMCONNECT:AVIONICS MASTER SWITCH" />
+              </EventConditions>
+              <EventActions>
+                <EventActionCommand>
+                  <Parameter Value="SPAD_neXt.Device_PowerOFF" />
+                </EventActionCommand>
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+      </Events>
       <Extensions />
     </Device>
     <Device VendorID="0x294B" ProductID="0x1900" DevicePath="\\?\hid#vid_294b&amp;pid_1900#d&amp;1257eebd&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
@@ -292,9 +296,9 @@
     <Option Key="Ultimarc.PacLed64.EnableVirtualPower" Value="True" />
     <Option Key="Ultimarc.PacLed64.Brightness" Value="128" />
   </Options>
-  <ProfileInformation ProfileID="04a4f3c1-0932-43e9-967c-87c4ee283189" Version="0.26">
+  <ProfileInformation ProfileID="04a4f3c1-0932-43e9-967c-87c4ee283189" Version="0.28">
     <Author>ShermheadRyder</Author>
     <Description />
-    <LastChanged>2024-07-19T18:32:02.3326633+01:00</LastChanged>
+    <LastChanged>2024-10-18T16:02:33.5538197+01:00</LastChanged>
   </ProfileInformation>
 </Profile>
