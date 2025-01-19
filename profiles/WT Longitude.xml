@@ -1,7 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Profile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="2" xmlns="http://www.fsgs.com/SPAD">
   <Devices>
-    <Device VendorID="0x294B" ProductID="0x1901" DevicePath="\\?\hid#vid_294b&amp;pid_1901#7&amp;87306dd&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
+    <Device VendorID="0x294B" ProductID="0x1901" DevicePath="\\?\hid#vid_294b&amp;pid_1901#b&amp;87306dd&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
       <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
         <Events>
           <Event BoundTo="BUTTON_15">
@@ -80,18 +79,20 @@
             <EventDefinitions>
               <EventDefinition Trigger="BUTTONLIGHT">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LVAR:S_MIP_PARKING_BRAKE" />
+                  <EventCondition ConditionTargetValue="0" ConditionValueSource="LVAR:S_MIP_PARKING_BRAKE" />
                 </EventConditions>
                 <EventActions>
-                  <EventActionButtonLight ButtonLight="OFF" />
+                  <EventActionLED />
                 </EventActions>
               </EventDefinition>
               <EventDefinition Trigger="BUTTONLIGHT">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:S_MIP_PARKING_BRAKE" />
+                  <EventCondition ConditionTargetValue="1" ConditionValueSource="LVAR:S_MIP_PARKING_BRAKE" />
                 </EventConditions>
                 <EventActions>
-                  <EventActionButtonLight ButtonLight="ON" />
+                  <EventActionLED>
+                    <Parameter Value="1" />
+                  </EventActionLED>
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -100,18 +101,20 @@
             <EventDefinitions>
               <EventDefinition Trigger="BUTTONLIGHT">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LVAR:I_MIP_MASTER_WARNING_CAPT" />
+                  <EventCondition ConditionTargetValue="0" ConditionValueSource="LVAR:I_MIP_MASTER_WARNING_CAPT" />
                 </EventConditions>
                 <EventActions>
-                  <EventActionButtonLight ButtonLight="OFF" />
+                  <EventActionLED />
                 </EventActions>
               </EventDefinition>
               <EventDefinition Trigger="BUTTONLIGHT">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:I_MIP_MASTER_WARNING_CAPT" />
+                  <EventCondition ConditionTargetValue="1" ConditionValueSource="LVAR:I_MIP_MASTER_WARNING_CAPT" />
                 </EventConditions>
                 <EventActions>
-                  <EventActionButtonLight ButtonLight="ON" />
+                  <EventActionLED>
+                    <Parameter Value="1" />
+                  </EventActionLED>
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -120,18 +123,20 @@
             <EventDefinitions>
               <EventDefinition Trigger="BUTTONLIGHT">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LVAR:I_MIP_MASTER_CAUTION_CAPT" />
+                  <EventCondition ConditionTargetValue="0" ConditionValueSource="LVAR:I_MIP_MASTER_CAUTION_CAPT" />
                 </EventConditions>
                 <EventActions>
-                  <EventActionButtonLight ButtonLight="OFF" />
+                  <EventActionLED />
                 </EventActions>
               </EventDefinition>
               <EventDefinition Trigger="BUTTONLIGHT">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:I_MIP_MASTER_CAUTION_CAPT" />
+                  <EventCondition ConditionTargetValue="1" ConditionValueSource="LVAR:I_MIP_MASTER_CAUTION_CAPT" />
                 </EventConditions>
                 <EventActions>
-                  <EventActionButtonLight ButtonLight="ON" />
+                  <EventActionLED>
+                    <Parameter Value="1" />
+                  </EventActionLED>
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -140,10 +145,12 @@
             <EventDefinitions>
               <EventDefinition Trigger="BUTTONLIGHT">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="2" ConditionValueSource="LVAR:S_ENG_MODE" />
+                  <EventCondition ConditionTargetValue="2" ConditionValueSource="LVAR:S_ENG_MODE" />
                 </EventConditions>
                 <EventActions>
-                  <EventActionButtonLight ButtonLight="ON" />
+                  <EventActionLED>
+                    <Parameter Value="1" />
+                  </EventActionLED>
                 </EventActions>
               </EventDefinition>
               <EventDefinition Trigger="BUTTONLIGHT">
@@ -151,7 +158,7 @@
                   <EventCondition ConditionComparator="Unequal" ConditionTargetValue="2" ConditionValueSource="LVAR:S_ENG_MODE" />
                 </EventConditions>
                 <EventActions>
-                  <EventActionButtonLight ButtonLight="OFF" />
+                  <EventActionLED />
                 </EventActions>
               </EventDefinition>
             </EventDefinitions>
@@ -198,7 +205,7 @@
             <EventDefinitions>
               <EventDefinition Trigger="VALUE">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:I_MIP_GEAR_3_L" />
+                  <EventCondition ConditionTargetValue="1" ConditionValueSource="LVAR:I_MIP_GEAR_3_L" />
                 </EventConditions>
                 <EventActions>
                   <EventActionLEDColor Color="GREEN" />
@@ -206,7 +213,7 @@
               </EventDefinition>
               <EventDefinition Trigger="VALUE">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LVAR:I_MIP_GEAR_3_L" />
+                  <EventCondition ConditionTargetValue="0" ConditionValueSource="LVAR:I_MIP_GEAR_3_L" />
                 </EventConditions>
                 <EventActions>
                   <EventActionLEDColor Color="OFF" />
@@ -214,7 +221,7 @@
               </EventDefinition>
               <EventDefinition Trigger="VALUE">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="2" ConditionValueSource="LVAR:I_MIP_GEAR_3_L" />
+                  <EventCondition ConditionTargetValue="2" ConditionValueSource="LVAR:I_MIP_GEAR_3_L" />
                 </EventConditions>
                 <EventActions>
                   <EventActionLEDColor Color="RED" />
@@ -226,7 +233,7 @@
             <EventDefinitions>
               <EventDefinition Trigger="VALUE">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:I_MIP_GEAR_2_L" />
+                  <EventCondition ConditionTargetValue="1" ConditionValueSource="LVAR:I_MIP_GEAR_2_L" />
                 </EventConditions>
                 <EventActions>
                   <EventActionLEDColor Color="GREEN" />
@@ -234,7 +241,7 @@
               </EventDefinition>
               <EventDefinition Trigger="VALUE">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LVAR:I_MIP_GEAR_2_L" />
+                  <EventCondition ConditionTargetValue="0" ConditionValueSource="LVAR:I_MIP_GEAR_2_L" />
                 </EventConditions>
                 <EventActions>
                   <EventActionLEDColor Color="OFF" />
@@ -242,7 +249,7 @@
               </EventDefinition>
               <EventDefinition Trigger="VALUE">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="2" ConditionValueSource="LVAR:I_MIP_GEAR_2_L" />
+                  <EventCondition ConditionTargetValue="2" ConditionValueSource="LVAR:I_MIP_GEAR_2_L" />
                 </EventConditions>
                 <EventActions>
                   <EventActionLEDColor Color="RED" />
@@ -254,7 +261,7 @@
             <EventDefinitions>
               <EventDefinition Trigger="VALUE">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="1" ConditionValueSource="LVAR:I_MIP_GEAR_1_L" />
+                  <EventCondition ConditionTargetValue="1" ConditionValueSource="LVAR:I_MIP_GEAR_1_L" />
                 </EventConditions>
                 <EventActions>
                   <EventActionLEDColor Color="GREEN" />
@@ -262,7 +269,7 @@
               </EventDefinition>
               <EventDefinition Trigger="VALUE">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="0" ConditionValueSource="LVAR:I_MIP_GEAR_1_L" />
+                  <EventCondition ConditionTargetValue="0" ConditionValueSource="LVAR:I_MIP_GEAR_1_L" />
                 </EventConditions>
                 <EventActions>
                   <EventActionLEDColor Color="OFF" />
@@ -270,7 +277,7 @@
               </EventDefinition>
               <EventDefinition Trigger="VALUE">
                 <EventConditions>
-                  <EventCondition ConditionComparator="Equals" ConditionTargetValue="2" ConditionValueSource="LVAR:I_MIP_GEAR_1_L" />
+                  <EventCondition ConditionTargetValue="2" ConditionValueSource="LVAR:I_MIP_GEAR_1_L" />
                 </EventConditions>
                 <EventActions>
                   <EventActionLEDColor Color="RED" />
@@ -374,30 +381,6 @@
               </EventDefinition>
             </EventDefinitions>
           </Event>
-          <Event BoundTo="BUTTON_23">
-            <EventDefinitions>
-              <EventDefinition Trigger="PRESS">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_UP" />
-                  <EventActionPlaySound SoundName="D:\spad.NEXT sounds\click.mp3">
-                    <Volume>50</Volume>
-                  </EventActionPlaySound>
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
-          <Event BoundTo="BUTTON_22">
-            <EventDefinitions>
-              <EventDefinition Trigger="PRESS">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_DN" />
-                  <EventActionPlaySound SoundName="D:\spad.NEXT sounds\click.mp3">
-                    <Volume>50</Volume>
-                  </EventActionPlaySound>
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
           <Event BoundTo="Y_AXIS">
             <EventDefinitions>
               <EventDefinition Trigger="VALUE">
@@ -415,13 +398,77 @@
               </EventDefinition>
             </EventDefinitions>
           </Event>
+          <Event BoundTo="BUTTON_22">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_DN" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_23">
+            <EventDefinitions>
+              <EventDefinition Trigger="PRESS">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:ELEV_TRIM_UP" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_10">
+            <EventDefinitions>
+              <EventDefinition Trigger="HELD">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:THROTTLE1_REVERSE_THRUST_HOLD" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_26">
+            <EventDefinitions>
+              <EventDefinition Trigger="HELD">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:THROTTLE1_DECR" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:THROTTLE1_CUT" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_27">
+            <EventDefinitions>
+              <EventDefinition Trigger="RELEASE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:THROTTLE2_CUT" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="HELD">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:THROTTLE2_DECR" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
+          <Event BoundTo="BUTTON_11">
+            <EventDefinitions>
+              <EventDefinition Trigger="HELD">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:THROTTLE2_REVERSE_THRUST_HOLD" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+          </Event>
         </Events>
         <Extensions />
       </DevicePage>
       <Events />
       <Extensions />
     </Device>
-    <Device VendorID="0x044F" ProductID="0x0405" DevicePath="\\?\hid#vid_044f&amp;pid_0405#8&amp;e7c901f&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
+    <Device VendorID="0x044F" ProductID="0x0405" DevicePath="\\?\hid#vid_044f&amp;pid_0405#9&amp;e7c901f&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
       <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
         <Events>
           <Event BoundTo="BUTTON_3">
@@ -433,33 +480,163 @@
               </EventDefinition>
             </EventDefinitions>
           </Event>
-          <Event BoundTo="BUTTON_4">
-            <EventDefinitions>
-              <EventDefinition Trigger="PRESS">
-                <EventActions>
-                  <EventActionControl TargetDataDefinition="SIMCONNECT:AP_MASTER" />
-                </EventActions>
-              </EventDefinition>
-            </EventDefinitions>
-          </Event>
         </Events>
         <Extensions />
       </DevicePage>
       <Events />
       <Extensions />
     </Device>
+    <Device VendorID="0x06A3" ProductID="0x0D05" DevicePath="\\?\hid#vid_06a3&amp;pid_0d05#c&amp;13e9b88d&amp;0&amp;0000#{4d1e55b2-f16f-11cf-88cb-001111000030}" Serial="" DeviceIndex="0" Version="3">
+      <DevicePage ID="72c73483-060e-4a22-94be-a6d0c6e32179" IsDefaultPage="true" Name="Default">
+        <Events>
+          <Event BoundTo="RADIOPANEL_UPPER_SELECTOR_COM1">
+            <EventDefinitions>
+              <EventDefinition Trigger="LEFTDISPLAY">
+                <EventActions>
+                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:COM ACTIVE FREQUENCY:1" DisplayFormatting="1" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="RIGHTDISPLAY">
+                <EventActions>
+                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:COM STANDBY FREQUENCY:1" DisplayFormatting="1" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_INNER_CLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM_RADIO_FRACT_INC" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="ACTIVATESHORT">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM1_RADIO_SWAP" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_OUTER_CLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM_RADIO_WHOLE_INC" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_OUTER_COUNTERCLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM_RADIO_WHOLE_DEC" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_INNER_COUNTERCLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM_RADIO_FRACT_DEC" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+            <Options>
+              <Option Key="TUNER_INNER_SENSITIVITY" Value="100" />
+              <Option Key="TUNER_OUTER_SENSITIVITY" Value="100" />
+              <Option Key="TUNER_MULTIPLY_1" Value="1" />
+              <Option Key="TUNER_MULTIPLY_2" Value="2" />
+              <Option Key="TUNER_MULTIPLY_3" Value="3" />
+            </Options>
+          </Event>
+          <Event BoundTo="RADIOPANEL_UPPER_SELECTOR_COM2">
+            <EventDefinitions>
+              <EventDefinition Trigger="LEFTDISPLAY">
+                <EventActions>
+                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:COM ACTIVE FREQUENCY:2" DisplayFormatting="1" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="RIGHTDISPLAY">
+                <EventActions>
+                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:COM STANDBY FREQUENCY:2" DisplayFormatting="1" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_INNER_CLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM2_RADIO_FRACT_INC" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="ACTIVATESHORT">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM2_RADIO_SWAP" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_OUTER_CLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM2_RADIO_WHOLE_INC" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_OUTER_COUNTERCLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM2_RADIO_WHOLE_DEC" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="TUNER_INNER_COUNTERCLOCKWISE">
+                <EventActions>
+                  <EventActionControl TargetDataDefinition="SIMCONNECT:COM2_RADIO_FRACT_DEC" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+            <Options>
+              <Option Key="TUNER_INNER_SENSITIVITY" Value="100" />
+              <Option Key="TUNER_OUTER_SENSITIVITY" Value="100" />
+              <Option Key="TUNER_MULTIPLY_1" Value="1" />
+              <Option Key="TUNER_MULTIPLY_2" Value="2" />
+              <Option Key="TUNER_MULTIPLY_3" Value="3" />
+            </Options>
+          </Event>
+          <Event BoundTo="RADIOPANEL_LOWER_SELECTOR_XPDR">
+            <EventDefinitions>
+              <EventDefinition Trigger="RIGHTDISPLAY">
+                <EventActions>
+                  <EventActionDisplayValue TargetDataDefinition="SIMCONNECT:NAV DME:1" DisplayFormat="00.0" />
+                </EventActions>
+              </EventDefinition>
+              <EventDefinition Trigger="LEFTDISPLAY">
+                <EventActions>
+                  <EventActionDisplayValue TargetDataDefinition="FSUIPC:0000:02B4" DisplayFormat="0" />
+                </EventActions>
+              </EventDefinition>
+            </EventDefinitions>
+            <Options>
+              <Option Key="TUNER_INNER_SENSITIVITY" Value="100" />
+              <Option Key="TUNER_OUTER_SENSITIVITY" Value="100" />
+              <Option Key="TUNER_MULTIPLY_1" Value="1" />
+              <Option Key="TUNER_MULTIPLY_2" Value="2" />
+              <Option Key="TUNER_MULTIPLY_3" Value="3" />
+            </Options>
+          </Event>
+        </Events>
+        <Extensions />
+      </DevicePage>
+      <Events>
+        <Event BoundTo="CONFIGURE_PANEL_STATUS">
+          <EventDefinitions>
+            <EventDefinition Trigger="VALUE">
+              <EventConditions>
+                <EventCondition ConditionTargetValue="1" ConditionValueSource="SIMCONNECT:AVIONICS MASTER SWITCH" />
+              </EventConditions>
+              <EventActions>
+                <EventActionCommand>
+                  <Parameter Value="SPAD_neXt.Device_PowerON" />
+                </EventActionCommand>
+              </EventActions>
+            </EventDefinition>
+            <EventDefinition Trigger="VALUE">
+              <EventConditions>
+                <EventCondition ConditionTargetValue="0" ConditionValueSource="SIMCONNECT:AVIONICS MASTER SWITCH" />
+              </EventConditions>
+              <EventActions>
+                <EventActionCommand>
+                  <Parameter Value="SPAD_neXt.Device_PowerOFF" />
+                </EventActionCommand>
+              </EventActions>
+            </EventDefinition>
+          </EventDefinitions>
+        </Event>
+      </Events>
+      <Extensions />
+    </Device>
   </Devices>
   <Options>
-    <Option Key="Elgato.Streamdeck.Brightness" Value="100" />
-    <Option Key="Elgato.Streamdeck.DarkenDevice" Value="True" />
     <Option Key="Saitek.BIP.EnableVirtualPower" Value="True" />
     <Option Key="Saitek.BIP.Brightness" Value="50" />
-    <Option Key="Saitek.BIP.Priority.VALUEOFF" Value="0" />
-    <Option Key="Saitek.BIP.Priority.VALUEGREEN" Value="1" />
-    <Option Key="Saitek.BIP.Priority.VALUEYELLOW" Value="2" />
-    <Option Key="Saitek.BIP.Priority.VALUERED" Value="4" />
-    <Option Key="Saitek.BIP.Priority.VALUEREDBLINK" Value="3" />
-    <Option Key="Saitek.FIP.BindLightToMode" Value="False" />
     <Option Key="Saitek.FIP.EnableVirtualPower" Value="True" />
     <Option Key="Saitek.FIP.DefaultPagingButtons" Value="True" />
     <Option Key="Saitek.FIP.PagingButtonsOn" Value="True" />
@@ -471,12 +648,10 @@
     <Option Key="Ultimarc.PacDrive.EnableVirtualPower" Value="True" />
     <Option Key="Ultimarc.PacLed64.EnableVirtualPower" Value="True" />
     <Option Key="Ultimarc.PacLed64.Brightness" Value="128" />
-    <Option Key="Elgato.Streamdeck.HeldThreshold" Value="500" />
-    <Option Key="Elgato.Streamdeck.HeldFrequency" Value="1" />
   </Options>
-  <ProfileInformation ProfileID="35282cf9-adc4-4d7f-9bc4-262587eec3f8" Version="0.10">
+  <ProfileInformation ProfileID="35282cf9-adc4-4d7f-9bc4-262587eec3f8" Version="0.15">
     <Author>ShermheadRyder</Author>
     <Description />
-    <LastChanged>2022-12-10T17:22:14.021772+00:00</LastChanged>
+    <LastChanged>2025-01-19T00:51:38.5769725+00:00</LastChanged>
   </ProfileInformation>
 </Profile>
